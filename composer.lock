@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9512ead632a7575b21dcfe9a70d2fe4a",
+    "content-hash": "d4909d2c62d78dee062596638cc91e98",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1297,6 +1297,52 @@
                 "type"
             ],
             "time": "2015-07-25T16:39:46+00:00"
+        },
+        {
+            "name": "protoqol/prequel",
+            "version": "0.6.2-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Protoqol/Prequel.git",
+                "reference": "aa73641d4f6d13b329f08285f5895ecb95b71fa9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Protoqol/Prequel/zipball/aa73641d4f6d13b329f08285f5895ecb95b71fa9",
+                "reference": "aa73641d4f6d13b329f08285f5895ecb95b71fa9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.7"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Protoqol\\Prequel\\PrequelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Protoqol\\Prequel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Quinten Justus Schorsij",
+                    "email": "qschorsij@outlook.com"
+                }
+            ],
+            "description": "Clear and concise database management.",
+            "time": "2019-07-07T15:08:46+00:00"
         },
         {
             "name": "psr/container",
@@ -4927,7 +4973,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "protoqol/prequel": 10
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
