@@ -3,6 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-2">
+            <div class="card" style="text-align: center">
+                <div class="card-header" sty>Usuarios</div>
+                <div class="card-body"><div style="font-size: 50px;">{{ $totalUsers }}</div></div>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Bienvenido {{ auth()->user()->name }}</div>
