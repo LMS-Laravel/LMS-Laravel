@@ -94,8 +94,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ env('APP_FB') }}">Facebook</a>
-                    <a href="h{{ env('APP_AUTHOR_URL') }}">{{ env('APP_AUTHOR_NAME') }}</a>
+                    <a href="{{ env('APP_FB') }}" target="_blank">Facebook</a>
+                    <a href="h{{ env('APP_AUTHOR_URL') }}" target="_blank">Fundador: {{ env('APP_AUTHOR_NAME') }}</a>
                 </div>
             </div>
         </div>
