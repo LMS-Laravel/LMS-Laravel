@@ -42,6 +42,7 @@
                     <p>A cada usuario internamente se le asiganara un codigo de seguridad, esto con el fin de que solo los usuarios registrados puedan ver los streaming y mas adelante solo se podra mantener una sesion abierta por dispositvo.</p>
                     <p>SOLICITUD: Estoy tratando de brindar una experiencia educativa diferente a lo que regularmente se hace asi que espero poder contar con tu apoyo a la hora de difundir esta idea.</p>
                     <p>Si quieres realizar una donacion para apoyar el sitio web y su contenido no dudes en escribirme a <a href="mailto:akurten@angelkurten.com">akurten@angelkurten.com</a></p>
+                    <h1>Fecha inicio: 01-Agosto-2019</h1>
                 </div>
                 <div class="fb-comments" data-href="{{ Request::url()}}" data-order-by="social" data-width="100%" data-numposts="10"></div>
             </div>
