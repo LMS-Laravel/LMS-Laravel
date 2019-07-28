@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @package App
  *
  * @property string $name
+ * @property string media_token
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

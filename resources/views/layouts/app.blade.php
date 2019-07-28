@@ -18,15 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143935566-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-143935566-1');
-    </script>
+    @include('includes.analytics')
 </head>
 <body>
     <div id="fb-root"></div>
@@ -44,7 +36,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li>
+                            <a class="nav-link btn btn-success" href="{{ route('stream') }}">@lang('live')</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

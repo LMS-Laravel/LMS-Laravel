@@ -27,4 +27,9 @@ class HomeController extends Controller
         $totalUsers = User::all()->count();
         return view('home', compact('totalUsers'));
     }
+
+    public function stream()
+    {
+        return view('stream');
+    }
 }
