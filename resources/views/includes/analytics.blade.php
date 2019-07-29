@@ -1,4 +1,4 @@
-@if(env('APP_ENV') == 'production')
+@if(env('APP_ENV') == 'production' && auth()->user()->id != 1)
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143935566-1"></script>
 <script>
