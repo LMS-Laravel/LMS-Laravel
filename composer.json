@@ -9,11 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
+        "beyondcode/laravel-websockets": "^1.0",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "5.8.*",
+        "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
-        "protoqol/prequel": "^0.6.2@beta"
+        "pusher/pusher-php-server": "~3.0",
+        "react/dns": "^0.4.19",
+        "ext-curl": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

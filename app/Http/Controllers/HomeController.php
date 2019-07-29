@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('messages');
     }
 
     /**
@@ -28,8 +29,13 @@ class HomeController extends Controller
         return view('home', compact('totalUsers'));
     }
 
+    /**
+     * Show stream and chat
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function stream()
     {
         return view('stream');
     }
+
 }
