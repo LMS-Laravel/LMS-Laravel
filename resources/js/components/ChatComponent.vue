@@ -64,6 +64,7 @@
                 newMessage:'',
                 activeUser:false,
                 typingTimer: false,
+                sound: 'sms.mp3',
                 left:true
             }
         },
@@ -72,6 +73,8 @@
             Echo.join('chat')
                 .listen('MessageSent', (event) => {
                     this.messages.push(event.message);
+                    let audio = new Audio(this.sound);
+                    audio.play();
                 })
                 .listenForWhisper('typing', user => {
                     this.activeUser = user;

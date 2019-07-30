@@ -1779,6 +1779,7 @@ __webpack_require__.r(__webpack_exports__);
       newMessage: '',
       activeUser: false,
       typingTimer: false,
+      sound: 'sms.mp3',
       left: true
     };
   },
@@ -1788,6 +1789,9 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchMessages();
     Echo.join('chat').listen('MessageSent', function (event) {
       _this.messages.push(event.message);
+
+      var audio = new Audio(_this.sound);
+      audio.play();
     }).listenForWhisper('typing', function (user) {
       _this.activeUser = user;
 
