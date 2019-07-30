@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Creativeorange\Gravatar\Gravatar;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,6 +19,8 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasApiTokens;
+
+    protected $appends = ['avatar'];
 
     /**
      * The attributes that are mass assignable.
@@ -53,5 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function getAvatarAttribute()
+    {
+        return \Creativeorange\Gravatar\Facades\Gravatar::get($this->attributes['email']);
     }
 }

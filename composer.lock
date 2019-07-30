@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16680e0c05cd3f94dbd241836b559249",
+    "content-hash": "16e4c861be8d701401ab9655f12b52e8",
     "packages": [
         {
             "name": "beyondcode/laravel-websockets",
@@ -195,6 +195,60 @@
                 "reactphp"
             ],
             "time": "2019-04-03T13:58:40+00:00"
+        },
+        {
+            "name": "creativeorange/gravatar",
+            "version": "v1.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/creativeorange/gravatar.git",
+                "reference": "865c8f20b1a20c5de105f90deeea596f7e060e25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/865c8f20b1a20c5de105f90deeea596f7e060e25",
+                "reference": "865c8f20b1a20c5de105f90deeea596f7e060e25",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Creativeorange\\Gravatar\\GravatarServiceProvider"
+                    ],
+                    "aliases": {
+                        "Gravatar": "Creativeorange\\Gravatar\\Facades\\Gravatar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Creativeorange\\Gravatar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaco Tijssen",
+                    "email": "jaco@creativeorange.nl",
+                    "homepage": "https://www.creativeorange.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Gravatar for Laravel 5.0.x through 5.5.x package for retrieving gravatar image URLs or checking the existance of an image.",
+            "keywords": [
+                "avatar",
+                "gravatar",
+                "laravel"
+            ],
+            "time": "2019-06-03T08:45:09+00:00"
         },
         {
             "name": "defuse/php-encryption",
