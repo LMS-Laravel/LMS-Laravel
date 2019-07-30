@@ -13,6 +13,7 @@ use Laravel\Passport\HasApiTokens;
  *
  * @property string $name
  * @property string media_token
+ * @property string email
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
