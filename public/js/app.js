@@ -1759,18 +1759,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -1779,15 +1767,24 @@ __webpack_require__.r(__webpack_exports__);
       newMessage: '',
       activeUser: false,
       typingTimer: false,
-      sound: 'sms.mp3',
-      left: true
+      left: true,
+      users: [],
+      sound: 'sms.mp3'
     };
   },
   created: function created() {
     var _this = this;
 
     this.fetchMessages();
-    Echo.join('chat').listen('MessageSent', function (event) {
+    Echo.join('chat').here(function (user) {
+      _this.users = user;
+    }).joining(function (user) {
+      _this.users.push(user);
+    }).leaving(function (user) {
+      _this.users = _this.users.filter(function (u) {
+        return u.id !== user.id;
+      });
+    }).listen('MessageSent', function (event) {
       _this.messages.push(event.message);
 
       var audio = new Audio(_this.sound);
@@ -47490,7 +47487,23 @@ var render = function() {
         "card card-primary cardutline direct-chat direct-chat-primary"
     },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "card-header" }, [
+        _c("h3", { staticClass: "card-title" }, [_vm._v("Chat")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-tools" }, [
+          _c(
+            "span",
+            {
+              staticClass: "badge bg-primary",
+              attrs: { "data-toggle": "tooltip", title: "users connected" }
+            },
+            [
+              _vm._v(_vm._s(_vm.users.length) + " "),
+              _c("i", { staticClass: "fa fas fa-users" })
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c(
@@ -47576,16 +47589,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Chat")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
