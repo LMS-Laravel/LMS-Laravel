@@ -33,7 +33,6 @@
                     this.messages.push(event.message);
                 })
                 .listenForWhisper('typing', user => {
-                    console.log('enter');
                     this.activeUser = user;
                     if(this.typingTimer) {
                         clearTimeout(this.typingTimer);
