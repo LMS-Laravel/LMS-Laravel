@@ -62,6 +62,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
         @include('includes.analytics')
     </head>
     <body>
