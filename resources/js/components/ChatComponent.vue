@@ -19,7 +19,7 @@
                         <!--<span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>-->
                     </div>
                     <!-- /.direct-chat-infos -->
-                    <img class="direct-chat-img" src="https://www.gravatar.com/avatar/e7f4690c8e8b9584f87de275bd669d8e.jpg?s=80&d=mm&r=g" alt="Message User Image">
+                    <img class="direct-chat-img" v-bind:style= "[isActiveUser(message.user) ? { 'border-style': 'solid', 'border-color':'green' } : { 'border-style': 'solid', 'border-color':'red' }]" src="https://www.gravatar.com/avatar/e7f4690c8e8b9584f87de275bd669d8e.jpg?s=80&d=mm&r=g" alt="Message User Image">
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
                         {{ message.message }}
@@ -102,6 +102,10 @@
             },
             sendTypingEvent(){
                 Echo.join('chat').whisper('typing', this.user);
+            },
+            isActiveUser(user)
+            {
+                return this.users.filter(u => u.id === user.id).length;
             }
         }
     }
