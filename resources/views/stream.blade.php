@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <iframe width="100%" height="450px" src="//159.65.221.105:/LiveApp/play.html?name={{ env('STREAM_KEY') }}" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="100%" height="450px" src="//159.65.221.105:/LiveApp/play.html?name={{ env('STREAM_KEY') }}&autoplay=true" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
