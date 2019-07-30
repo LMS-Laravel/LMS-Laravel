@@ -47516,7 +47516,7 @@ var render = function() {
           {
             directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
             staticClass: "direct-chat-messages",
-            staticStyle: { height: "440px", "overflow-y": "scroll" }
+            staticStyle: { height: "410px", "overflow-y": "scroll" }
           },
           _vm._l(_vm.messages, function(message, index) {
             return _c("div", { key: index, staticClass: "direct-chat-msg" }, [
@@ -47554,7 +47554,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer" }, [
-        _c("input", {
+        _c("textarea", {
           directives: [
             {
               name: "model",
@@ -47567,7 +47567,7 @@ var render = function() {
           attrs: {
             type: "text",
             name: "message",
-            placeholder: "Enter your message"
+            placeholder: "¿Que estas pensando?"
           },
           domProps: { value: _vm.newMessage },
           on: {

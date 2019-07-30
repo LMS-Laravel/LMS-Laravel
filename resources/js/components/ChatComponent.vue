@@ -11,7 +11,7 @@
         <!-- /.card-header -->
         <div class="card-body" >
             <!-- Conversations are loaded here -->
-            <div class="direct-chat-messages" style="height: 440px; overflow-y:scroll" v-chat-scroll>
+            <div class="direct-chat-messages" style="height: 410px; overflow-y:scroll" v-chat-scroll>
                 <!-- Message. Default to the left -->
                 <div v-for="(message, index) in messages" :key="index" class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
@@ -33,7 +33,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
 
-            <input type="text" v-model="newMessage" @keydown="sendTypingEvent" @keyup.enter="sendMessage" name="message" placeholder="Enter your message" class="form-control">
+            <textarea type="text" v-model="newMessage" @keydown="sendTypingEvent" @keyup.enter="sendMessage" name="message" placeholder="¿Que estas pensando?" class="form-control"></textarea>
             <span class="text-muted" v-if="activeUser">{{ activeUser.name}} is typing...</span>
         </div>
         <!-- /.card-footer-->
