@@ -38,7 +38,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li>
-                            <a class="nav-link btn btn-success" href="{{ route('stream') }}">@lang('live')</a>
+                            <a class="nav-link btn btn-success" href="{{ route('stream') }}">@lang('Stream')</a>
                         </li>
                     </ul>
 
