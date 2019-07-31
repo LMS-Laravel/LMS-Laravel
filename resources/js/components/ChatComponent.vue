@@ -21,7 +21,7 @@
                     <!-- /.direct-chat-infos -->
                     <img class="direct-chat-img" v-bind:style= "[isActiveUser(message.user) ? { 'border-style': 'solid', 'border-color':'green' } : { 'border-style': 'solid', 'border-color':'red' }]" src="https://www.gravatar.com/avatar/e7f4690c8e8b9584f87de275bd669d8e.jpg?s=80&d=mm&r=g" alt="Message User Image">
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
+                    <div class="direct-chat-text" v-bind:style= "[isActiveUser(message.user) ? { 'background': '#007bff', 'color':'black'} : '']">
                         {{ message.message }}
                     </div>
                     <!-- /.direct-chat-text -->
@@ -94,18 +94,24 @@
             sendMessage(){
                 this.messages.push({
                     user: this.user,
-                    message: this.newMessage
+                    message: this.ucFirst(this.newMessage)
                 });
-                axios.post('api/message', {message: this.newMessage});
+                axios.post('api/message', {message: this.ucFirst(this.newMessage)});
 
                 this.newMessage = '';
             },
             sendTypingEvent(){
                 Echo.join('chat').whisper('typing', this.user);
             },
-            isActiveUser(user)
-            {
+            isActiveUser(user){
                 return this.users.filter(u => u.id === user.id).length;
+            },
+            isAdmin(user){
+                return user.id === 1;
+            },
+            ucFirst(string)
+            {
+                return string.charAt(0).toUpperCase() + string.slice(1);
             }
         }
     }

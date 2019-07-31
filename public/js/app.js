@@ -1812,10 +1812,10 @@ __webpack_require__.r(__webpack_exports__);
     sendMessage: function sendMessage() {
       this.messages.push({
         user: this.user,
-        message: this.newMessage
+        message: this.ucFirst(this.newMessage)
       });
       axios.post('api/message', {
-        message: this.newMessage
+        message: this.ucFirst(this.newMessage)
       });
       this.newMessage = '';
     },
@@ -1826,6 +1826,12 @@ __webpack_require__.r(__webpack_exports__);
       return this.users.filter(function (u) {
         return u.id === user.id;
       }).length;
+    },
+    isAdmin: function isAdmin(user) {
+      return user.id === 1;
+    },
+    ucFirst: function ucFirst(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
     }
   }
 });
@@ -47540,13 +47546,24 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "direct-chat-text" }, [
-                _vm._v(
-                  "\n                     " +
-                    _vm._s(message.message) +
-                    "\n                 "
-                )
-              ])
+              _c(
+                "div",
+                {
+                  staticClass: "direct-chat-text",
+                  style: [
+                    _vm.isActiveUser(message.user)
+                      ? { background: "#007bff", color: "black" }
+                      : ""
+                  ]
+                },
+                [
+                  _vm._v(
+                    "\n                     " +
+                      _vm._s(message.message) +
+                      "\n                 "
+                  )
+                ]
+              )
             ])
           }),
           0
