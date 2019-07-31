@@ -47551,7 +47551,7 @@ var render = function() {
                 {
                   staticClass: "direct-chat-text",
                   style: [
-                    _vm.isActiveUser(message.user)
+                    _vm.isAdmin(message.user)
                       ? { background: "#007bff", color: "black" }
                       : ""
                   ]

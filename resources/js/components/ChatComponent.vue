@@ -21,7 +21,7 @@
                     <!-- /.direct-chat-infos -->
                     <img class="direct-chat-img" v-bind:style= "[isActiveUser(message.user) ? { 'border-style': 'solid', 'border-color':'green' } : { 'border-style': 'solid', 'border-color':'red' }]" src="https://www.gravatar.com/avatar/e7f4690c8e8b9584f87de275bd669d8e.jpg?s=80&d=mm&r=g" alt="Message User Image">
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text" v-bind:style= "[isActiveUser(message.user) ? { 'background': '#007bff', 'color':'black'} : '']">
+                    <div class="direct-chat-text" v-bind:style= "[isAdmin(message.user) ? { 'background': '#007bff', 'color':'black'} : '']">
                         {{ message.message }}
                     </div>
                     <!-- /.direct-chat-text -->
