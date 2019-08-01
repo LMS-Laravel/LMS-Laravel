@@ -13,8 +13,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <stream :url_stream="'{{ env('MEDIA_URL')  }}'" :stream_id="{{ env('STREAM_KEY') }}"></stream>
-                        <!--<iframe width="100%" height="450px" src="//{{env('MEDIA_URL')}}:/LiveApp/play.html?name={{ env('STREAM_KEY') }}&autoplay=true" frameborder="0" allowfullscreen></iframe>-->
+                        <!--<stream :url_stream="'{{ env('MEDIA_URL')  }}'" :stream_id="{{ env('STREAM_KEY') }}"></stream>-->
+                        <iframe width="100%" height="450px" src="//{{env('MEDIA_URL')}}:/LiveApp/play.html?name={{ env('STREAM_KEY') }}&autoplay=true" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
