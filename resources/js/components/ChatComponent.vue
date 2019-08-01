@@ -6,6 +6,10 @@
             <h3 class="card-title">Chat</h3>
             <div class="card-tools">
                 <span data-toggle="tooltip" title="users connected" class="badge bg-primary">{{ users.length }} <i class="fa fas fa-users"></i></span>
+                <span data-toggle="tooltip" v-on:click="changeVolumen" title="volume" class="badge bg-primary">
+                    <i v-if="muted" class="fa fas fa-volume-off"></i>
+                    <i v-else class="fa fas fa-volume-up"></i>
+                </span>
             </div>
         </div>
         <!-- /.card-header -->
@@ -56,7 +60,8 @@
                 left:true,
                 users:[],
                 sound: 'sms.mp3',
-                render: toolkit
+                render: toolkit,
+                muted: false,
             }
         },
         created() {
@@ -66,15 +71,19 @@
                     this.users = user;
                 })
                 .joining(user => {
-                    this.users.push(user);
+                    if(this.users.filter(u => u.id !== user.id).length){
+                        this.users.push(user);
+                    }
                 })
                 .leaving(user=> {
                     this.users = this.users.filter(u => u.id !== user.id);
                 })
                 .listen('MessageSent', (event) => {
                     this.messages.push(event.message);
-                    let audio = new Audio(this.sound);
-                    audio.play();
+                    if(!this.muted){
+                        let audio = new Audio(this.sound);
+                        audio.play();
+                    }
                 })
                 .listenForWhisper('typing', user => {
                     this.activeUser = user;
@@ -134,6 +143,13 @@
             ucFirst(string)
             {
                 return string.charAt(0).toUpperCase() + string.slice(1);
+            },
+            changeVolumen(){
+                if(this.muted){
+                    this.muted = false;
+                    return true;
+                }
+                this.muted = true;
             }
         }
     }
