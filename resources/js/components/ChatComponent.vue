@@ -11,7 +11,7 @@
         <!-- /.card-header -->
         <div class="card-body" >
             <!-- Conversations are loaded here -->
-            <div class="direct-chat-messages" style="height: 410px; overflow-y:scroll" v-chat-scroll>
+            <div class="direct-chat-messages" style="height: 359px; overflow-y:scroll" v-chat-scroll>
                 <!-- Message. Default to the left -->
                 <div v-for="(message, index) in messages" :key="index" class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
@@ -21,9 +21,8 @@
                     <!-- /.direct-chat-infos -->
                     <img class="direct-chat-img" v-bind:style= "[isActiveUser(message.user) ? { 'border-style': 'solid', 'border-color':'green' } : { 'border-style': 'solid', 'border-color':'red' }]" src="https://www.gravatar.com/avatar/e7f4690c8e8b9584f87de275bd669d8e.jpg?s=80&d=mm&r=g" alt="Message User Image">
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text" v-bind:style= "[isAdmin(message.user) ? { 'background': '#007bff', 'color':'black'} : '']">
-                        {{ message.message }}
-                    </div>
+                    <div class="direct-chat-text" v-html=render.shortnameToImage(message.message) v-bind:style= "[isAdmin(message.user) ? { 'background': '#007bff', 'color':'black'} : '']">
+                        </div>
                     <!-- /.direct-chat-text -->
                 </div>
                 <!-- /.direct-chat-msg -->
@@ -33,7 +32,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
 
-            <textarea type="text" v-model="newMessage" @keydown="sendTypingEvent" @keyup.enter="sendMessage" name="message" placeholder="¿Que estas pensando?" class="form-control"></textarea>
+            <textarea type="text" v-model="newMessage" ref="message" @keydown="sendTypingEvent" @keyup.enter="sendMessage" name="message" placeholder="¿Que estas pensando?" class="form-control"></textarea>
             <span class="text-muted" v-if="activeUser">{{ activeUser.name}} is typing...</span>
         </div>
         <!-- /.card-footer-->
@@ -44,6 +43,8 @@
 </template>
 
 <script>
+    import toolkit from 'emoji-toolkit';
+
     export default {
         props:['user'],
         data() {
@@ -55,6 +56,7 @@
                 left:true,
                 users:[],
                 sound: 'sms.mp3',
+                render: toolkit
             }
         },
         created() {
@@ -85,6 +87,27 @@
                 });
 
         },
+        mounted(){
+            var self = this;
+            var element = this.$refs['message'];
+            $(element).emojioneArea({
+                pickerPosition: "top",
+                tonesStyle: "bullet",
+                autocomplete: true,
+                shortnames: true,
+                saveEmojisAs: "shortname",
+                events: {
+                    keyup: function (editor, event){
+                         if(event.keyCode === 13){
+                             self.newMessage = this.getText();
+                             self.sendMessage();
+
+                             editor[0].textContent = '';
+                         }
+                    }
+                }
+            });
+        },
         methods: {
             fetchMessages(){
                 axios.get('api/message').then(response => {
@@ -97,7 +120,6 @@
                     message: this.ucFirst(this.newMessage)
                 });
                 axios.post('api/message', {message: this.ucFirst(this.newMessage)});
-
                 this.newMessage = '';
             },
             sendTypingEvent(){
