@@ -19,7 +19,8 @@
         "laravel/tinker": "^1.0",
         "pusher/pusher-php-server": "~3.0",
         "react/dns": "^0.4.19",
-        "spatie/laravel-google-calendar": "^2.2"
+        "spatie/laravel-google-calendar": "^2.2",
+        "spatie/laravel-permission": "^2.37"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

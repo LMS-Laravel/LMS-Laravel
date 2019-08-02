@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\MessageSent;
-use App\Message;
-use App\User;
+use App\Entities\User;
+use App\Entities\Message;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller

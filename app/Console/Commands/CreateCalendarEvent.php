@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Entities\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Spatie\GoogleCalendar\Event;
@@ -13,7 +14,7 @@ class CreateCalendarEvent extends Command
      *
      * @var string
      */
-    protected $signature = 'calendar:make {month} {day} {hour} {minutes}';
+    protected $signature =  'calendar:make {month} {day} {hour} {minutes}';
 
     /**
      * The console command description.
@@ -45,7 +46,7 @@ class CreateCalendarEvent extends Command
         $event->startDateTime = Carbon::create(2019, $this->argument('month'), $this->argument('day'), $this->argument('hour'), $this->argument('minutes'), 00);
         $event->endDateTime = Carbon::create(2019, $this->argument('month'), $this->argument('day'), $this->argument('hour') + 2, $this->argument('minutes'), 00);
 
-        $users = \App\User::all('email');
+        $users = User::all('email');
 
         $users->each(function ($user) use ($event) {
             $event->addAttendee([

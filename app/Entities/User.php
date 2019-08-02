@@ -1,12 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use Creativeorange\Gravatar\Gravatar;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Spatie\Permission\Traits\HasPermissions;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User
@@ -16,9 +19,9 @@ use Laravel\Passport\HasApiTokens;
  * @property string media_token
  * @property string email
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens;
+    use Notifiable, HasApiTokens, HasRoles;
 
     protected $appends = ['avatar'];
 
