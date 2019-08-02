@@ -20,7 +20,7 @@
                 <div v-for="(message, index) in messages" :key="index" class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
                         <span class="direct-chat-name float-left">{{ message.user.name }}</span>
-                        <!--<span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>-->
+                        <span class="direct-chat-timestamp float-right">{{ parseDate(message.created_at) }}</span>
                     </div>
                     <!-- /.direct-chat-infos -->
                     <img class="direct-chat-img" v-bind:style= "[isActiveUser(message.user) ? { 'border-style': 'solid', 'border-color':'green' } : { 'border-style': 'solid', 'border-color':'red' }]" src="https://www.gravatar.com/avatar/e7f4690c8e8b9584f87de275bd669d8e.jpg?s=80&d=mm&r=g" alt="Message User Image">
@@ -48,6 +48,7 @@
 
 <script>
     import toolkit from 'emoji-toolkit';
+    import moment  from 'moment';
 
     export default {
         props:['user'],
@@ -150,6 +151,21 @@
                     return true;
                 }
                 this.muted = true;
+            },
+            parseDate(date){
+                if(date){
+                    return moment(date, "YYYY-MM-DD hh:mm:ss").locale('es').fromNow();
+                } else {
+                    var now = moment().subtract(1, 'seconds');
+
+                    return moment(now).locale('es').fromNow();
+                }
+
+            }
+        },
+        filters: {
+            moment: function (date) {
+                return moment(date).format('MMMM Do YYYY, h:mm:ss a');
             }
         }
     }
