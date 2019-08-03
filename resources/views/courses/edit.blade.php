@@ -40,7 +40,7 @@
     </div>
     <!-- /.card -->
     <div class="col-12">
-        <a href="#" class="btn btn-secondary">@lang('general.cancel')</a>
+        <a href="{{ route('course.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
         <input type="submit" value="@lang('course/actions.update')" class="btn btn-primary float-right">
     </div>
     {{ Form::close() }}
