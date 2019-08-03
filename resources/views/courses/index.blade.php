@@ -4,7 +4,10 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">@lang('course/actions.index')</h3>
+            <div class="d-flex align-items-center">
+                <h3 class="card-title mx-auto w-100">@lang('course/actions.index')</h3>
+                <a href="{{ route('course.create') }}" class="btn btn-success">@lang('course/actions.new')</a>
+            </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -17,6 +20,7 @@
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('course/fields.name')</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('course/fields.description')</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('course/fields.teacher')</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label=""></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,6 +30,18 @@
                                 <td>{{ $course->name }}</td>
                                 <td>{{ $course->description }}</td>
                                 <td>{{ $course->teacher->name }}</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <a href="{{ route('course.edit', $course->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
+                                        </div>
+                                        <div class="col-2">
+                                            {{ Form::open(['url' => route('course.destroy', $course->id), 'method' => 'DELETE']) }}
+                                                <input type="submit" value="@lang('course/actions.delete')" class="btn btn-danger float-right">
+                                            {{ Form::close() }}
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -35,6 +51,7 @@
                                 <th rowspan="1" colspan="1">@lang('course/fields.name')</th>
                                 <th rowspan="1" colspan="1">@lang('course/fields.description')</th>
                                 <th rowspan="1" colspan="1">@lang('course/fields.teacher')</th>
+                                <th rowspan="1" colspan="1"></th>
                             </tr>
                         </tfoot>
                     </table>

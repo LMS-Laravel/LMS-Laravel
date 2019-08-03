@@ -20,14 +20,19 @@ class EloquentCourseRepository implements CourseRepositoryInterface
         return $this->getModel()->create($data);
     }
 
-    public function update(array $data)
+    public function update(int $id, array $data)
     {
-        return $this->getModel()->update($data);
+        return $this->getModel()->find($id)->update($data);
+    }
+
+    public function delete(int $id)
+    {
+        return $this->getModel()->find($id)->delete();
     }
 
     public function findById(int $id)
     {
-        return $this->getModel()->find($id);
+        return $this->getModel()->findOrFail($id);
     }
 
     public function all()
