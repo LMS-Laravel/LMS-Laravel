@@ -31,16 +31,10 @@
                                 <td>{{ $course->description }}</td>
                                 <td>{{ $course->teacher->name }}</td>
                                 <td>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <a href="{{ route('course.edit', $course->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
-                                        </div>
-                                        <div class="col-2">
-                                            {{ Form::open(['url' => route('course.destroy', $course->id), 'method' => 'DELETE']) }}
-                                                <input type="submit" value="@lang('course/actions.delete')" class="btn btn-danger float-right">
-                                            {{ Form::close() }}
-                                        </div>
-                                    </div>
+                                    <a href="{{ route('course.edit', $course->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
+                                    {{ Form::open(['url' => route('course.destroy', $course->id), 'method' => 'DELETE']) }}
+                                        <input type="submit" value="@lang('course/actions.delete')" class="btn btn-danger float-right">
+                                    {{ Form::close() }}
                                 </td>
                             </tr>
                             @endforeach
