@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Usescases\Contracts;
+namespace App\Usescases\Users\Contracts;
 
 
 interface AssingRoleUserUsecaseInterface

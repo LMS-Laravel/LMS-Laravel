@@ -2,7 +2,8 @@
 
 namespace App\Entities;
 
-use Creativeorange\Gravatar\Gravatar;
+use Creativeorange\Gravatar\Facades\Gravatar;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -54,7 +55,7 @@ class User extends Authenticatable
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function messages()
     {
@@ -63,6 +64,14 @@ class User extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        return \Creativeorange\Gravatar\Facades\Gravatar::get($this->attributes['email']);
+        return Gravatar::get($this->attributes['email']);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function courses() : HasMany
+    {
+        return $this->hasMany(Course::class);
     }
 }
