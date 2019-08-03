@@ -157,16 +157,10 @@
                     return moment(date, "YYYY-MM-DD hh:mm:ss").locale('es').fromNow();
                 } else {
                     var now = moment().subtract(1, 'seconds');
-
                     return moment(now).locale('es').fromNow();
                 }
 
             }
         },
-        filters: {
-            moment: function (date) {
-                return moment(date).format('MMMM Do YYYY, h:mm:ss a');
-            }
-        }
     }
 </script>
