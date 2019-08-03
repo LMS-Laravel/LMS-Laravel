@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Course\CreateRequest;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
 use App\Usescases\Courses\CreateCourseUsecase;
+use App\Usescases\Courses\UpdateCourseUsecase;
+use App\Usescases\Courses\DeleteCourseUsecase;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -26,7 +29,7 @@ class CourseController extends Controller
 
     public function show($id)
     {
-
+        
     }
 
     public function create(UserRepositoryInterface $userRepository)
@@ -38,22 +41,26 @@ class CourseController extends Controller
     public function store(CreateRequest $request, CreateCourseUsecase $courseUsecase)
     {
         $courseUsecase->handle($request->all());
-
         return redirect()->route('course.index');
     }
 
-    public function edit($id)
+    public function edit($id, UserRepositoryInterface $userRepository, CourseRepositoryInterface $courseRepository)
     {
+        $course = $courseRepository->findById($id);
+        $users = $userRepository->all()->pluck('name', 'id');
 
+        return view('courses.edit', compact('course', 'users'));
     }
 
-    public function update()
+    public function update($id, CreateRequest $request, UpdateCourseUsecase $courseUsecase)
     {
-
+        $courseUsecase->handle($id, $request->all());
+        return redirect()->route('course.index');
     }
 
-    public function destroy()
+    public function destroy($id, DeleteCourseUsecase $courseUsecase)
     {
-
+        $courseUsecase->handle($id);
+        return redirect()->route('course.index');
     }
 }
