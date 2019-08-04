@@ -6,7 +6,9 @@ use App\Http\Requests\Course\CreateRequest;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
+use App\Usescases\Courses\Contracts\DeleteCourseUsecaseInterface;
 use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
+use App\Usescases\Courses\Contracts\UpdateCourseUsecaseInterface;
 use App\Usescases\Courses\CreateCourseUsecase;
 use App\Usescases\Courses\UpdateCourseUsecase;
 use App\Usescases\Courses\DeleteCourseUsecase;
@@ -53,13 +55,13 @@ class CourseController extends Controller
         return view('courses.edit', compact('course', 'users'));
     }
 
-    public function update($id, CreateRequest $request, UpdateCourseUsecase $courseUsecase)
+    public function update($id, CreateRequest $request, UpdateCourseUsecaseInterface $courseUsecase)
     {
         $courseUsecase->handle($id, $request->all());
         return redirect()->route('course.index');
     }
 
-    public function destroy($id, DeleteCourseUsecase $courseUsecase)
+    public function destroy($id, DeleteCourseUsecaseInterface $courseUsecase)
     {
         $courseUsecase->handle($id);
         return redirect()->route('course.index');
