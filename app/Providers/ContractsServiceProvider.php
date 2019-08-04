@@ -4,13 +4,17 @@
 namespace App\Providers;
 
 
+use App\Repositories\Contracts\PermissionRepositoryInterface;
+use App\Repositories\Contracts\RoleRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Repositories\EloquentPermissionRepository;
+use App\Repositories\EloquentRoleRepository;
 use App\Repositories\EloquentUserRepository;
 use App\Services\Contracts\ServiceRoleInterface;
 use App\Services\Roles\SpatieServiceRole;
 use App\Usescases\Users\AssignRoleUserUsecase;
 use Illuminate\Support\ServiceProvider;
-use App\Usescases\Contracts\AssingRoleUserUsecaseInterface;
+use App\Usescases\Contracts\AssignRoleUserUsecaseInterface;
 
 
 class ContractsServiceProvider extends ServiceProvider
@@ -19,9 +23,11 @@ class ContractsServiceProvider extends ServiceProvider
     protected $classes = [
         //Repositories
         UserRepositoryInterface::class => EloquentUserRepository::class,
+        RoleRepositoryInterface::class => EloquentRoleRepository::class,
+        PermissionRepositoryInterface::class => EloquentPermissionRepository::class,
 
         //Usescases
-        AssingRoleUserUsecaseInterface::class => AssignRoleUserUsecase::class,
+        AssignRoleUserUsecaseInterface::class => AssignRoleUserUsecase::class,
 
         //Services
         ServiceRoleInterface::class => SpatieServiceRole::class

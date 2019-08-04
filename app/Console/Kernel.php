@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\CreateCalendarEvent;
+use App\Console\Commands\MakePermissionCommand;
 use App\Console\Commands\UpdateMediaTokenUser;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -16,7 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         UpdateMediaTokenUser::class,
-        CreateCalendarEvent::class
+        CreateCalendarEvent::class,
+        MakePermissionCommand::class,
     ];
 
     /**
