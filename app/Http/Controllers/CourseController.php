@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Course\CreateRequest;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\CourseRepositoryInterface;
+use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
 use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
 use App\Usescases\Courses\CreateCourseUsecase;
 use App\Usescases\Courses\UpdateCourseUsecase;
@@ -38,7 +39,7 @@ class CourseController extends Controller
         return view('courses.create', compact('users'));
     }
 
-    public function store(CreateRequest $request, CreateCourseUsecase $courseUsecase)
+    public function store(CreateRequest $request, CreateCourseUsescaseInterface $courseUsecase)
     {
         $courseUsecase->handle($request->all());
         return redirect()->route('course.index');
