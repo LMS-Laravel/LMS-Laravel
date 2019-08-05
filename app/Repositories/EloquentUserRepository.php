@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 class EloquentUserRepository implements UserRepositoryInterface
 {
 
-    public function getModel(): Model
+    public function getModel(): User
     {
         return new User();
     }

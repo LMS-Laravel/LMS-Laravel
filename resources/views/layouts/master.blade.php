@@ -14,7 +14,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-transition sidebar-mini">
 <div class="wrapper " id="app">
 
     <!-- Navbar -->
@@ -97,6 +97,18 @@
                             </p>
                         </a>
                     </li>
+                    @can('view_admin')
+                    <li class="nav-header">@lang('menus.administration')</li>
+                    <li class="nav-item">
+                        <a href="{{ route('roles.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-lock"></i>
+                            <p>
+                                @lang('roles.roles')
+                            </p>
+                        </a>
+                    </li>
+                    @endcan
+                    <li class="nav-header"></li>
 
                     <li class="nav-item">
                         <a class="nav-link"  href="{{ route('logout') }}"
@@ -135,6 +147,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
+                @include('flash::message')
                 <div class="row">
                     @yield('content')
                 </div>
