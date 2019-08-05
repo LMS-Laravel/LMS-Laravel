@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     @if(!isset($options))
                     @can('edit_roles')
-                        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit(trans('general.save'), ['class' => 'btn btn-primary']) !!}
                     @endcan
                     @endif
                 </li>

@@ -101,13 +101,14 @@
                     <li class="nav-header">@lang('menus.administration')</li>
                     <li class="nav-item">
                         <a href="{{ route('roles.index') }}" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <i class="nav-icon fas fa-lock"></i>
                             <p>
-                                Roles
+                                @lang('roles.roles')
                             </p>
                         </a>
                     </li>
                     @endcan
+                    <li class="nav-header"></li>
 
                     <li class="nav-item">
                         <a class="nav-link"  href="{{ route('logout') }}"
