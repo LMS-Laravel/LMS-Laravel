@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-md-12">
-    {{ Form::open(['url' => route('course.store')]) }}
+    {{ Form::open(['url' => route('courses.store')]) }}
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">@lang('course/fields.courses')</h3>
@@ -40,7 +40,7 @@
     </div>
     <!-- /.card -->
     <div class="col-12">
-        <a href="{{ route('course.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
+        <a href="{{ route('courses.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
         <input type="submit" value="@lang('course/actions.create')" class="btn btn-success float-right">
     </div>
     {{ Form::close() }}

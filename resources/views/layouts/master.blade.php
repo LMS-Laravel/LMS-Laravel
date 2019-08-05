@@ -107,6 +107,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('courses.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                @lang('course/fields.courses')
+                            </p>
+                        </a>
+                    </li>
                     @endcan
                     <li class="nav-header"></li>
 

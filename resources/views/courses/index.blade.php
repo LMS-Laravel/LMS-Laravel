@@ -6,7 +6,7 @@
         <div class="card-header">
             <div class="d-flex align-items-center">
                 <h3 class="card-title mx-auto w-100">@lang('course/actions.index')</h3>
-                <a href="{{ route('course.create') }}" class="btn btn-success">@lang('course/actions.new')</a>
+                <a href="{{ route('courses.create') }}" class="btn btn-success">@lang('course/actions.new')</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -31,8 +31,8 @@
                                 <td>{{ $course->description }}</td>
                                 <td>{{ $course->teacher->name }}</td>
                                 <td>
-                                    <a href="{{ route('course.edit', $course->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
-                                    {{ Form::open(['url' => route('course.destroy', $course->id), 'method' => 'DELETE']) }}
+                                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
+                                    {{ Form::open(['url' => route('courses.destroy', $course->id), 'method' => 'DELETE']) }}
                                         <input type="submit" value="@lang('course/actions.delete')" class="btn btn-danger float-right">
                                     {{ Form::close() }}
                                 </td>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-md-12">
-    {{ Form::open(['url' => route('course.update', $course->id), 'method' => 'PUT']) }}
+    {{ Form::open(['url' => route('courses.update', $course->id), 'method' => 'PUT']) }}
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">@lang('course/fields.courses')</h3>
@@ -39,15 +39,41 @@
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
-    <div class="col-12">
-        <a href="{{ route('course.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
-        <input type="submit" value="@lang('course/actions.update')" class="btn btn-primary float-right">
-    </div>
-    {{ Form::close() }}
-</div>
 </div>
 
-</section>
+<div class="col-md-12">
+    <div id="accordion">
+        <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
+        <div class="card card-primary">
+            <div class="card-header d-flex p-0">
+                <h4 class="card-title p-3">
+                    <a data-toggle="collapse" aria-expanded="true" data-parent="#accordion" href="#lessons">
+                        Lessons
+                    </a>
+                </h4>
+                <ul class="nav nav-pills ml-auto p-2">
+                    <li class="nav-item">
+                        @can('edit_lessons')
+                            {!! Form::submit(trans('general.save'), ['class' => 'btn btn-primary']) !!}
+                        @endcan
+                    </li>
+                </ul>
+            </div>
+            <div id="lessons" class="panel-collapse collapse show">
+                <div class="card-body">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <a href="{{ route('courses.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
+    <input type="submit" value="@lang('course/actions.update')" class="btn btn-primary float-right">
+</div>
+{{ Form::close() }}
 
 <!-- /.content -->
 @endsection

@@ -20,10 +20,7 @@ Auth::routes(['verify' => false]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/stream', 'HomeController@stream')->name('stream')->middleware('verified');
 
-
-Route::resource('course', 'CourseController');
-
-
 Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('courses', 'CourseController');
     Route::resource('roles', 'RoleController');
 });
