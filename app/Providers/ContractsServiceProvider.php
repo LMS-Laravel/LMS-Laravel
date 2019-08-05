@@ -5,8 +5,12 @@ namespace App\Providers;
 
 
 use App\Repositories\Contracts\CourseRepositoryInterface;
+use App\Repositories\Contracts\PermissionRepositoryInterface;
+use App\Repositories\Contracts\RoleRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\EloquentCourseRepository;
+use App\Repositories\EloquentPermissionRepository;
+use App\Repositories\EloquentRoleRepository;
 use App\Repositories\EloquentUserRepository;
 use App\Services\Contracts\ServiceRoleInterface;
 use App\Services\Roles\SpatieServiceRole;
@@ -21,6 +25,7 @@ use App\Usescases\Courses\DeleteCourseUsecase;
 use App\Usescases\Users\AssignRoleUserUsecase;
 use App\Usescases\Users\Contracts\AssingRoleUserUsecaseInterface;
 use Illuminate\Support\ServiceProvider;
+use App\Usescases\Contracts\AssignRoleUserUsecaseInterface;
 
 
 class ContractsServiceProvider extends ServiceProvider
@@ -30,13 +35,15 @@ class ContractsServiceProvider extends ServiceProvider
         //Repositories
         UserRepositoryInterface::class => EloquentUserRepository::class,
         CourseRepositoryInterface::class => EloquentCourseRepository::class,
+        RoleRepositoryInterface::class => EloquentRoleRepository::class,
+        PermissionRepositoryInterface::class => EloquentPermissionRepository::class,
 
         //Usescases
-        AssingRoleUserUsecaseInterface::class => AssignRoleUserUsecase::class,
         CreateCourseUsescaseInterface::class => CreateCourseUsecase::class,
         ListCourseUsecaseInterface::class => ListCourseUsecase::class,
         UpdateCourseUsecaseInterface::class => UpdateCourseUsecase::class,
         DeleteCourseUsecaseInterface::class => DeleteCourseUsecase::class,
+        AssignRoleUserUsecaseInterface::class => AssignRoleUserUsecase::class,
 
 
         //Services

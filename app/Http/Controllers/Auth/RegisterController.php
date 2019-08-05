@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Entities\User;
 use App\Http\Controllers\Controller;
+use App\Usescases\Contracts\AssignRoleUserUsecaseInterface;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,11 +31,14 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+    /**
+     * @var AssignRoleUserUsecaseInterface
+     */
+    private $assignRoleUserUsecase;
 
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -69,4 +74,12 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function registered(Request $request, $user)
+    {
+        $user->assignRole('User');
+
+    }
+
+
 }

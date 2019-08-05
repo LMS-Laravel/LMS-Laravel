@@ -4,7 +4,7 @@
 namespace App\Usescases\Users\Contracts;
 
 
-interface AssingRoleUserUsecaseInterface
+interface AssignRoleUserUsecaseInterface
 {
     public function handle(int $id, string $role): bool;
 }

@@ -23,3 +23,7 @@ Route::get('/stream', 'HomeController@stream')->name('stream')->middleware('veri
 
 Route::resource('course', 'CourseController');
 
+
+Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('roles', 'RoleController');
+});
