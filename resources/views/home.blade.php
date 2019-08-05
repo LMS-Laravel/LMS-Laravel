@@ -12,7 +12,7 @@
                         <h5 class="widget-user-desc">{{ $course->teacher->name }}</h5>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="{{ auth()->user()->avatar }}" alt="User Avatar">
+                        <img class="img-circle elevation-2" src="{{ $course->teacher->avatar }}" alt="User Avatar">
                     </div>
                     <div class="card-footer">
                         <div class="row">
