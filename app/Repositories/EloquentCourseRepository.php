@@ -37,6 +37,6 @@ class EloquentCourseRepository implements CourseRepositoryInterface
 
     public function all()
     {
-        return $this->getModel()->all();
+        return $this->getModel()->with('teacher')->get();
     }
 }

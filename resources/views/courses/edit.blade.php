@@ -35,10 +35,15 @@
                     </span>
                 @endif
             </div>
+            <div class="col-12">
+                <a href="{{ route('courses.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
+                <input type="submit" value="@lang('course/actions.update')" class="btn btn-primary float-right">
+            </div>
         </div>
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
+    {{ Form::close() }}
 </div>
 
 <div class="col-md-12">
@@ -68,12 +73,6 @@
         </div>
     </div>
 </div>
-
-<div class="col-12">
-    <a href="{{ route('courses.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
-    <input type="submit" value="@lang('course/actions.update')" class="btn btn-primary float-right">
-</div>
-{{ Form::close() }}
 
 <!-- /.content -->
 @endsection
