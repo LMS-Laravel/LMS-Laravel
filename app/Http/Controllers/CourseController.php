@@ -10,6 +10,7 @@ use App\Traits\Authorizable;
 use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
 use App\Usescases\Courses\Contracts\DeleteCourseUsecaseInterface;
 use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
+use App\Usescases\Courses\Contracts\ListLessonUsecaseInterface;
 use App\Usescases\Courses\Contracts\UpdateCourseUsecaseInterface;
 use App\Usescases\Courses\CreateCourseUsecase;
 use App\Usescases\Courses\UpdateCourseUsecase;
@@ -33,9 +34,11 @@ class CourseController extends Controller
         return view('courses.index', compact('courses'));
     }
 
-    public function show($id)
+    public function show($id, ListLessonUsecaseInterface $listLessonUsecase, CourseRepositoryInterface $courseRepository)
     {
-
+        $lessons = $listLessonUsecase->handle();
+        $course = $courseRepository->findById($id);
+        return view('courses.show', compact('lessons', 'course'));
     }
 
     public function create(UserRepositoryInterface $userRepository)

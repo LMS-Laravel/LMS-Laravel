@@ -40,4 +40,9 @@ class EloquentLessonRepository  implements LessonRepositoryInterface
     {
         return $this->getModel()->all();
     }
+
+    public function allAvailable() : Collection
+    {
+        return $this->getModel()->all()->where('status', 'enabled');
+    }
 }
