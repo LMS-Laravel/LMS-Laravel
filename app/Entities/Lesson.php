@@ -10,7 +10,7 @@ class Lesson extends Model
 {
     use Gutenbergable;
 
-    protected  $fillable = ['title', 'content', 'course_id'];
+    protected  $fillable = ['title', 'content', 'course_id', 'status'];
 
     public function course() : BelongsTo
     {
