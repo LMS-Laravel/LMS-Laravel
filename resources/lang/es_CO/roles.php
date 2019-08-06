@@ -8,6 +8,7 @@ return [
     'admin' => 'Admin',
     'teacher' => 'Profesor',
     'user' => 'Usario',
+    'coordinador' => 'Coordinador',
     'not_have' => 'No hay roles definidos'
 
 ];

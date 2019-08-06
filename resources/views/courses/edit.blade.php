@@ -59,7 +59,7 @@
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item">
                         @can('edit_lessons')
-                            {!! Form::submit(trans('general.save'), ['class' => 'btn btn-primary']) !!}
+                            <a href="{{ route('lessons.create', $course->id) }}" class="btn btn-primary">@lang('general.new')</a>
                         @endcan
                     </li>
                 </ul>

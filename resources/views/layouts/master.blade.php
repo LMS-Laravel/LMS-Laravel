@@ -13,6 +13,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper " id="app">
@@ -190,6 +191,6 @@
 
 
 <script src="{{ asset('js/app.js') }}"></script>
-
+@yield('scripts')
 </body>
 </html>

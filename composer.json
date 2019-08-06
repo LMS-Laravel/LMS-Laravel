@@ -22,7 +22,8 @@
         "pusher/pusher-php-server": "~3.0",
         "react/dns": "^0.4.19",
         "spatie/laravel-google-calendar": "^2.2",
-        "spatie/laravel-permission": "^2.37"
+        "spatie/laravel-permission": "^2.37",
+        "van-ons/laraberg": "^1.0@RC"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
