@@ -18,23 +18,15 @@
                                 <div class="card card-primary">
                                     <div class="card-header d-flex p-0">
                                         <h4 class="card-title p-3">
-                                            <a data-toggle="collapse" aria-expanded="true" data-parent="#accordion" href="#{{ isset($lesson->title) ? Str::slug($lesson->title) :  'permissionHeading' }}">
+                                            <a  href="{{route('lessons.show', $lesson->id)}}">
                                                 {{ $lesson->title }}
                                             </a>
                                         </h4>
                                         <ul class="nav nav-pills ml-auto p-2">
                                             <li class="nav-item">
-                                                <a href="{{route('lessons.show', $lesson->id)}}">@lang('general.show')</a>
+                                                <a class="btn btn-primary" href="{{route('lessons.show', $lesson->id)}}">@lang('general.show')</a>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div id="{{ isset($lesson->title) ? Str::slug($lesson->title) :  'permissionHeading' }}" class="panel-collapse collapse show">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <!---->
-                                                {!!$lesson->content!!}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
