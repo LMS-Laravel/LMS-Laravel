@@ -18,12 +18,17 @@ class EloquentLessonRepository  implements LessonRepositoryInterface
 
     public function create(array $data): Lesson
     {
-        return $this->getModel()->create($data);
+        $model = $this->getModel()->create($data);
+        $model->lb_content = $data['content'];
+        return $model;
     }
 
     public function update(int $id, array $data)
     {
-        return $this->getModel()->find($id)->update($data);
+        $model = $this->getModel()->find($id);
+        $model->update($data);
+        $model->lb_content = $data['content'];
+        return $model;
     }
 
     public function findById(int $id)
