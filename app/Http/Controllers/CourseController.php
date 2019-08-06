@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Course\CreateRequest;
+use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Traits\Authorizable;
@@ -34,7 +35,7 @@ class CourseController extends Controller
 
     public function show($id)
     {
-        
+
     }
 
     public function create(UserRepositoryInterface $userRepository)
@@ -53,8 +54,9 @@ class CourseController extends Controller
     {
         $course = $courseRepository->findById($id);
         $users = $userRepository->all()->pluck('name', 'id');
+        $lessons = $course->lessons->where('status', 'enabled');
 
-        return view('courses.edit', compact('course', 'users'));
+        return view('courses.edit', compact('course', 'users', 'lessons'));
     }
 
     public function update($id, CreateRequest $request, UpdateCourseUsecaseInterface $courseUsecase)

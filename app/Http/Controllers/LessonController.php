@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Entities\Course;
 use App\Http\Requests\Lesson\CreateRequest;
+use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Traits\Authorizable;
 use App\Usescases\Courses\Contracts\CreateLessonUsecaseInterface;
+use App\Usescases\Courses\Contracts\DeleteLessonUsescaseInterface;
+use App\Usescases\Courses\Contracts\UpdateLessonUsescaseInterface;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -69,9 +72,11 @@ class LessonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, LessonRepositoryInterface $lessonRepository)
     {
-        //
+        $lesson = $lessonRepository->findById($id);
+
+        return view('lessons.edit', compact('lesson'));
     }
 
     /**
@@ -81,9 +86,10 @@ class LessonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, UpdateLessonUsescaseInterface $updateLessonUsescase)
     {
-        //
+        $updateLessonUsescase->handle($id, $request->all());
+        return redirect()->route('courses.edit', $request->course_id);
     }
 
     /**
@@ -92,8 +98,9 @@ class LessonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, DeleteLessonUsescaseInterface $deleteLessonUsescase)
     {
-        //
+        $deleteLessonUsescase->handle($id);
+        return redirect()->back();
     }
 }
