@@ -14,6 +14,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('styles')
+    @include('includes.analytics')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper " id="app">
