@@ -14,7 +14,6 @@
                     <div class="card-body">
                         @forelse ($lessons as $lesson)
                             <div id="accordion">
-                                <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
                                 <div class="card card-primary">
                                     <div class="card-header d-flex p-0">
                                         <h4 class="card-title p-3">
