@@ -66,7 +66,39 @@
             </div>
             <div id="lessons" class="panel-collapse collapse show">
                 <div class="card-body">
-                    <div class="row">
+                    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">@lang('lesson/fields.id')</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('lesson/fields.title')</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label=""></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($lessons as $lesson)
+                                    <tr role="row" class="odd">
+                                        <td class="sorting_1">{{ $lesson->id }}</td>
+                                        <td>{{ $lesson->title }}</td>
+                                        <td>
+                                            <a href="{{ route('lessons.edit', $lesson->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
+                                            {{ Form::open(['url' => route('lessons.destroy', $lesson->id), 'method' => 'DELETE']) }}
+                                                <input type="submit" value="@lang('lesson/actions.delete')" class="btn btn-danger float-right">
+                                            {{ Form::close() }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">@lang('lesson/fields.id')</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">@lang('lesson/fields.title')</th>
+                                    <th rowspan="1" colspan="1"></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
