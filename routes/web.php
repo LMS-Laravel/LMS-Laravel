@@ -15,11 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/stream', 'HomeController@stream')->name('stream')->middleware('verified');
 
 Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('courses', 'CourseController');
     Route::resource('roles', 'RoleController');
+    Route::resource('lessons', 'LessonController')->except('create');
+    Route::get('/lessons/create/{course}', 'LessonController@create')->name('lessons.create');
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entities\User;
 use App\Entities\Message;
+use App\Repositories\Contracts\CourseRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,12 +22,14 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param CourseRepositoryInterface $courseRepository
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(CourseRepositoryInterface $courseRepository)
     {
-        $totalUsers = User::all()->count();
-        return view('home', compact('totalUsers'));
+        $courses = $courseRepository->all();
+
+        return view('home', compact('courses'));
     }
 
     /**

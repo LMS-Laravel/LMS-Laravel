@@ -2,51 +2,50 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-2">
-            <div class="card" style="text-align: center">
-                <div class="card-header" sty>Usuarios</div>
-                <div class="card-body"><div style="font-size: 50px;">{{ $totalUsers }}</div></div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Bienvenido {{ auth()->user()->name }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+    <div class="row">
+        @foreach($courses as $course)
+            <div class="col-md-4">
+                <div class="card card-widget widget-user">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-info-active">
+                        <h3 class="widget-user-username">{{ $course->name }}</h3>
+                        <h5 class="widget-user-desc">{{ $course->teacher->name }}</h5>
+                    </div>
+                    <div class="widget-user-image">
+                        <img class="img-circle elevation-2" src="{{ $course->teacher->avatar }}" alt="User Avatar">
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-4 border-right">
+                                <div class="description-block">
+                                    <h5 class="description-header">3,200</h5>
+                                    <span class="description-text">STUDENTS</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-4 border-right">
+                                <div class="description-block">
+                                    <a href="{{route('courses.show', $course->id)}}" class="btn"><i class="icon far fa-2x fa-eye text-green"></i></a>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-4">
+                                <div class="description-block">
+                                    <h5 class="description-header">35</h5>
+                                    <span class="description-text">LEVEL</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
                         </div>
-                    @endif
-
-                    <p>
-                        Esta plataforma nace para apoyar a todas aquellas personas que estan aprendiendo Laravel y/o aquellas que quieren aprender conceptos avanzados de desarrollo,
-                        para lograr dicho objetivo estaremos construyendo un proyecto open-source llamado LMS-Laravel, durante el transcurso del desarrollo estaremos aprendiendo los siguientes conceptos:
-                    </p>
-                    <ul>
-                        <li>Principio SOLID</li>
-                        <li>Principio DRY : Don't repeat yourself</li>
-                        <li>Patron Repositorio</li>
-                        <li>Patron Estrategia</li>
-                        <li>Arquitectura Limpia</li>
-                        <li>Pruebas Unitarias</li>
-                        <li>Desarrollo basado en contratos</li>
-                        <li>Principio "Object Parameter"</li>
-                        <li>Git Flow & Feature Flags</li>
-                        <li>Desarrollo Modular</li>
-                    </ul>
-
-                    <p>La metodologia de trabajo sera muy simple, se realizaran talleres via streaming de Lunes a Sabado, la duracion de cada taller sera de 2 horas hasta tener una version 1.0 del LMS.</p>
-                    <p>Este sitio web se ira actualizando a medida que el LMS se vaya desarrollando, la idea principal es convertir esta experiencia en un laboratio real en donde se vayan viendo los resultados del dia a dia y que todos podamos aportar para el desarrollo del LMS.</p>
-                    <p>A cada usuario internamente se le asiganara un codigo de seguridad, esto con el fin de que solo los usuarios registrados puedan ver los streaming y mas adelante solo se podra mantener una sesion abierta por dispositvo.</p>
-                    <p>SOLICITUD: Estoy tratando de brindar una experiencia educativa diferente a lo que regularmente se hace asi que espero poder contar con tu apoyo a la hora de difundir esta idea.</p>
-                    <p>Si quieres realizar una donacion para apoyar el sitio web y su contenido no dudes en escribirme a <a href="mailto:akurten@angelkurten.com">akurten@angelkurten.com</a></p>
-                    <h1>Fecha inicio: 01-Agosto-2019</h1>
+                        <!-- /.row -->
+                    </div>
                 </div>
-                <div class="fb-comments" data-href="{{ Request::url()}}" data-order-by="social" data-width="100%" data-numposts="10"></div>
+                <!-- /.col -->
             </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection

@@ -6,7 +6,8 @@ namespace App\Usescases\Users;
 
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Services\Contracts\ServiceRoleInterface;
-use App\Usescases\Contracts\AssingRoleUserUsecaseInterface;
+use App\Usescases\Users\Contracts\AssingRoleUserUsecaseInterface;
+
 
 class AssignRoleUserUsecase implements AssingRoleUserUsecaseInterface
 {
