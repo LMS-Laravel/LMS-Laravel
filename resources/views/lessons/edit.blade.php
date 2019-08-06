@@ -35,7 +35,7 @@
                     <!-- /.card-body -->
                     <div class="col-12">
                         <a href="{{ route('courses.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>
-                        <input type="submit" value="@lang('lesson/actions.edit')" class="btn btn-success float-right">
+                        <input type="submit" value="@lang('general.save')" class="btn btn-success float-right">
                     </div>
                 </div>
             </div>
