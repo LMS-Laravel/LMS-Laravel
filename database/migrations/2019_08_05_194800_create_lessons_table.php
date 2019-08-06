@@ -19,7 +19,7 @@ class CreateLessonsTable extends Migration
             $table->string('title');
             $table->longText('content');
             $table->bigInteger('course_id')->unsigned();
-            $table->enum('status', ['enabled', 'disabled'])->default('disabled');
+            $table->enum('status', ['enabled', 'disabled'])->default('enabled');
 
             $table->foreign('course_id')->references('id')->on('courses');
 
