@@ -16,7 +16,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return response()->json(Message::with('user')->get());
+        return response()->json(Message::with('user')->limit(50)->get());
     }
 
     /**
