@@ -5,6 +5,7 @@ return [
     'save' => 'Guardar',
     'close' => 'Cerrar',
     'name' => 'Nombre',
-    'cancel' => 'Cancelar'
+    'cancel' => 'Cancelar',
+    'show' => 'Ver',
 ];
 

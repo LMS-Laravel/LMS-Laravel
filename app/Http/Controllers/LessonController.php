@@ -61,9 +61,10 @@ class LessonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, LessonRepositoryInterface $lessonRepository)
     {
-        //
+        $lesson = $lessonRepository->findById($id);
+        return view('lessons.show', compact('lesson'));
     }
 
     /**

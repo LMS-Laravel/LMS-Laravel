@@ -20,6 +20,8 @@ interface LessonRepositoryInterface
 
     public function all() : Collection;
 
+    public function allAvailable() : Collection;
+
     public function findById(int $id);
 
 }

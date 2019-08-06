@@ -20,6 +20,7 @@ use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
 use App\Usescases\Courses\Contracts\CreateLessonUsecaseInterface;
 use App\Usescases\Courses\Contracts\DeleteLessonUsescaseInterface;
 use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
+use App\Usescases\Courses\Contracts\ListLessonUsecaseInterface;
 use App\Usescases\Courses\Contracts\UpdateCourseUsecaseInterface;
 use App\Usescases\Courses\Contracts\DeleteCourseUsecaseInterface;
 use App\Usescases\Courses\Contracts\UpdateLessonUsescaseInterface;
@@ -27,6 +28,7 @@ use App\Usescases\Courses\CreateCourseUsecase;
 use App\Usescases\Courses\CreateLessonUsecase;
 use App\Usescases\Courses\DeleteLessonUsecase;
 use App\Usescases\Courses\ListCourseUsecase;
+use App\Usescases\Courses\ListLessonUsecase;
 use App\Usescases\Courses\UpdateCourseUsecase;
 use App\Usescases\Courses\DeleteCourseUsecase;
 use App\Usescases\Courses\UpdateLessonUsecase;
@@ -56,6 +58,7 @@ class ContractsServiceProvider extends ServiceProvider
         //AssignRoleUserUsecaseInterface::class => AssignRoleUserUsecase::class,
         UpdateLessonUsescaseInterface::class => UpdateLessonUsecase::class,
         DeleteLessonUsescaseInterface::class => DeleteLessonUsecase::class,
+        ListLessonUsecaseInterface::class => ListLessonUsecase::class,
 
 
         //Services

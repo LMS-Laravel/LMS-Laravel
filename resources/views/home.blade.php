@@ -26,7 +26,7 @@
                             <!-- /.col -->
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <a href="" class="btn"><i class="icon far fa-2x fa-eye text-green"></i></a>
+                                    <a href="{{route('courses.show', $course->id)}}" class="btn"><i class="icon far fa-2x fa-eye text-green"></i></a>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
