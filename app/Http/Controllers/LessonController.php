@@ -88,7 +88,12 @@ class LessonController extends Controller
      */
     public function update(Request $request, $id, UpdateLessonUsescaseInterface $updateLessonUsescase)
     {
-        $updateLessonUsescase->handle($id, $request->all());
+        try {
+            $updateLessonUsescase->handle($id, $request->all());
+            flash('Lección guardada correctamente');
+        } catch (\Exception $e){
+            flash('No se ha podido guardar la lección', 'error');
+        }
         return redirect()->route('courses.edit', $request->course_id);
     }
 
@@ -100,7 +105,12 @@ class LessonController extends Controller
      */
     public function destroy($id, DeleteLessonUsescaseInterface $deleteLessonUsescase)
     {
-        $deleteLessonUsescase->handle($id);
+        try {
+            $deleteLessonUsescase->handle($id);
+            flash('Lección eliminada correctamente');
+        } catch (\Exception $e){
+            flash('No se ha podido eliminar la lección', 'error');
+        }
         return redirect()->back();
     }
 }
