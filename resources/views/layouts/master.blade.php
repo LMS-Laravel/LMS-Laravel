@@ -9,7 +9,7 @@
     <title>{{ env('APP_NAME') }} | {{ env('APP_DESCRIPTION') }}</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel='icon' href='favicon.ico' type='image/x-icon' >
+    <link rel='icon' href='/favicon.ico' type='image/x-icon' >
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
