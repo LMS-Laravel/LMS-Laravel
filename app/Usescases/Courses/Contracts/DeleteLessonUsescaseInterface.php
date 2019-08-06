@@ -4,9 +4,7 @@
 namespace App\Usescases\Courses\Contracts;
 
 
-interface DeleteCourseUsecaseInterface
+interface DeleteLessonUsescaseInterface
 {
-
     public function handle(int $id);
-
 }

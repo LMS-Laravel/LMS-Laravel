@@ -5,11 +5,10 @@ namespace App\Usescases\Courses;
 
 
 use App\Repositories\Contracts\LessonRepositoryInterface;
-use App\Usescases\Courses\Contracts\CreateLessonUsecaseInterface;
+use App\Usescases\Courses\Contracts\DeleteLessonUsescaseInterface;
 
-class CreateLessonUsecase implements CreateLessonUsecaseInterface
+class DeleteLessonUsecase implements DeleteLessonUsescaseInterface
 {
-
     /**
      * @var LessonRepositoryInterface
      */
@@ -20,8 +19,9 @@ class CreateLessonUsecase implements CreateLessonUsecaseInterface
         $this->lessonRepository = $lessonRepository;
     }
 
-    public function handle(array $data)
+    public function handle(int $id)
     {
-        return $this->lessonRepository->create($data);
+        $this->lessonRepository->delete($id);
     }
+
 }
