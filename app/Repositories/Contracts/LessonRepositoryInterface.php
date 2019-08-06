@@ -5,6 +5,7 @@ namespace App\Repositories\Contracts;
 
 
 use App\Entities\Lesson;
+use Illuminate\Support\Collection;
 
 interface LessonRepositoryInterface
 {
@@ -13,5 +14,12 @@ interface LessonRepositoryInterface
 
     public function create(array $data) : Lesson;
 
+    public function update(int $id, array $data);
+
+    public function delete(int $id);
+
+    public function all() : Collection;
+
+    public function findById(int $id);
 
 }
