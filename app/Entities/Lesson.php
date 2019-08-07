@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use VanOns\Laraberg\Models\Gutenbergable;
 
+/**
+ * @property string title
+ */
 class Lesson extends Model
 {
     use Gutenbergable;
