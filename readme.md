@@ -20,14 +20,9 @@ LMS-laravel is based as its name indicates in the framework laravel 5, and uses 
 5. Run `php artisan key:generate`
 6. Run `php artisan migrate`
 7. Run `npm i`
-8. From the projects root run `php artisan app:install`
+8. For auth api `php artisan passport:install`
+8. Websocket server for chat `php artisan websockets:serve`
 9. Configurate credentials mailgun in .env
-
-### Seeded Credentials
--------------
-* User: admin
-* Pass: admin123
-
 
 ### Laravel Auth License
 LMS-Laravel is licensed under the MIT license. Enjoy!
