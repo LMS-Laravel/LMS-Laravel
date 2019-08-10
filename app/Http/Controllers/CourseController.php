@@ -49,7 +49,14 @@ class CourseController extends Controller
 
     public function store(CreateRequest $request, CreateCourseUsescaseInterface $courseUsecase)
     {
-        $courseUsecase->handle($request->all());
+        $result = $courseUsecase->handle($request->all());
+
+        if($result['data']){
+            flash('Curso creado correctamente');
+        } else {
+            flash(implode('-', $result['errors']), 'error');
+        }
+
         return redirect()->route('courses.index');
     }
 

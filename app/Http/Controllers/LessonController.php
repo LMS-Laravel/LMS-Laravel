@@ -10,10 +10,15 @@ use App\Usescases\Courses\Contracts\CreateLessonUsecaseInterface;
 use App\Usescases\Courses\Contracts\DeleteLessonUsescaseInterface;
 use App\Usescases\Courses\Contracts\UpdateLessonUsescaseInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
     use Authorizable;
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -46,10 +51,15 @@ class LessonController extends Controller
     public function store(CreateRequest $request, CreateLessonUsecaseInterface $createLessonUsecase)
     {
         try {
-            $createLessonUsecase->handle($request->all());
-            flash('Clase creada correctamente');
+            $result = $createLessonUsecase->handle($request->all(), auth()->user()->id);
+            if($result['data']){
+                flash('Clase creada correctamente');
+            } else {
+                flash(implode('-', $result['errors']), 'error');
+            }
+
         } catch (\Exception $e){
-            flash('No se ha podido crear la case', 'error');
+            flash($e->getMessage(), 'error');
         }
 
         return redirect()->route('courses.edit', $request->get('course_id'));

@@ -20,6 +20,7 @@ class EloquentLessonRepository  implements LessonRepositoryInterface
     {
         $model = $this->getModel()->create($data);
         $model->lb_content = $data['content'];
+        $data['status'] = 'enabled';
         return $model;
     }
 

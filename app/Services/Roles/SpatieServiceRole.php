@@ -19,4 +19,9 @@ class SpatieServiceRole implements ServiceRoleInterface
             return false;
         }
     }
+
+    public function hasRole(User $user, string $role): bool
+    {
+        return $user->hasRole($role);
+    }
 }
