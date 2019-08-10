@@ -40,8 +40,11 @@ use App\Usescases\Contracts\AssignRoleUserUsecaseInterface;
 
 class ContractsServiceProvider extends ServiceProvider
 {
-
-    protected $classes = [
+    /**
+     *
+     * @var array
+     */
+    public $bindings = [
         //Repositories
         UserRepositoryInterface::class => EloquentUserRepository::class,
         CourseRepositoryInterface::class => EloquentCourseRepository::class,
@@ -63,7 +66,6 @@ class ContractsServiceProvider extends ServiceProvider
 
         //Services
         ServiceRoleInterface::class => SpatieServiceRole::class
-
     ];
 
     /**
@@ -73,9 +75,7 @@ class ContractsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach ($this->classes as $interface => $implementation) {
-            $this->app->bind($interface, $implementation);
-        }
+        
     }
 
     /**
