@@ -26,9 +26,10 @@
                     <img class="direct-chat-img" v-bind:style= "[isActiveUser(message.user) ? { 'border-style': 'solid', 'border-color':'green' } : { 'border-style': 'solid', 'border-color':'red' }]" src="https://www.gravatar.com/avatar/e7f4690c8e8b9584f87de275bd669d8e.jpg?s=80&d=mm&r=g" alt="Message User Image">
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text" v-html=render.shortnameToImage(message.message) v-bind:style= "[isAdmin(message.user) ? { 'background': '#007bff', 'color':'black'} : '']">
-                        </div>
+                    </div>
                     <!-- /.direct-chat-text -->
                 </div>
+                <span class="text-muted" v-if="activeUser">{{ activeUser.name}} is typing...</span>
                 <!-- /.direct-chat-msg -->
             </div>
             <!--/.direct-chat-messages-->
@@ -36,8 +37,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
 
-            <textarea type="text" v-model="newMessage" ref="message" @keydown="sendTypingEvent" @keyup.enter="sendMessage" name="message" placeholder="¿Que estas pensando?" class="form-control"></textarea>
-            <span class="text-muted" v-if="activeUser">{{ activeUser.name}} is typing...</span>
+            <textarea type="text" v-model="newMessage" ref="message" @keyup.enter="sendMessage" name="message" placeholder="¿Que estas pensando?" class="form-control"></textarea>
         </div>
         <!-- /.card-footer-->
     </div>
@@ -111,9 +111,11 @@
                          if(event.keyCode === 13){
                              self.newMessage = this.getText();
                              self.sendMessage();
-
                              editor[0].textContent = '';
                          }
+                    },
+                    keydown: function(){
+                        self.sendTypingEvent();
                     }
                 }
             });

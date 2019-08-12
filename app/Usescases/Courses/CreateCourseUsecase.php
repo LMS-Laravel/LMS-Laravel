@@ -6,8 +6,7 @@ namespace App\Usescases\Courses;
 
 use App\Entities\User;
 use App\Enums\Roles;
-use App\Repositories\Contracts\CourseRepositoryInterface;
-use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Repositories\Contracts\{CourseRepositoryInterface, UserRepositoryInterface};
 use App\Services\Contracts\ServiceRoleInterface;
 use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
 
