@@ -3,19 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Course\CreateRequest;
-use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Traits\Authorizable;
 use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
 use App\Usescases\Courses\Contracts\DeleteCourseUsecaseInterface;
 use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
-use App\Usescases\Courses\Contracts\ListLessonUsecaseInterface;
+use App\Usescases\Lessons\Contracts\ListLessonUsecaseInterface;
 use App\Usescases\Courses\Contracts\UpdateCourseUsecaseInterface;
-use App\Usescases\Courses\CreateCourseUsecase;
-use App\Usescases\Courses\UpdateCourseUsecase;
-use App\Usescases\Courses\DeleteCourseUsecase;
-use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
