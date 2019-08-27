@@ -51,7 +51,7 @@
     import moment  from 'moment';
 
     export default {
-        props:['user'],
+        props:['user', 'resource', 'type'],
         data() {
             return {
                 messages: '',
@@ -63,10 +63,12 @@
                 sound: 'sms.mp3',
                 render: toolkit,
                 muted: false,
+                routeApi:  '/api/message',
             }
         },
         created() {
             this.fetchMessages();
+
             Echo.join('chat')
                 .here(user => {
                     this.users = user;
@@ -122,7 +124,8 @@
         },
         methods: {
             fetchMessages(){
-                axios.get('api/message').then(response => {
+                this.makeUrlApi();
+                axios.get(this.routeApi).then(response => {
                     this.messages = response.data;
                 })
             },
@@ -131,7 +134,12 @@
                     user: this.user,
                     message: this.ucFirst(this.newMessage)
                 });
-                axios.post('api/message', {message: this.ucFirst(this.newMessage)});
+                this.makeUrlApi();
+                axios.post(this.routeApi, {
+                    message: this.ucFirst(this.newMessage),
+                    resource: this.resource,
+                    type: this.type
+                });
                 this.newMessage = '';
             },
             sendTypingEvent(){
@@ -161,7 +169,11 @@
                     var now = moment().subtract(1, 'seconds');
                     return moment(now).locale('es').fromNow();
                 }
-
+            },
+            makeUrlApi(){
+                if(this.type !== 'stream'){
+                    this.routeApi += "?resource="+this.resource+"&type=" + this.type;
+                }
             }
         },
     }

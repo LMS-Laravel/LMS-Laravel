@@ -34,4 +34,9 @@ class Course extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function messages()
+    {
+        return $this->morphMany(Message::class, 'messageable')->with('user');
+    }
 }
