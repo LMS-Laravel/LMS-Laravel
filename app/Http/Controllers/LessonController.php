@@ -6,9 +6,9 @@ use App\Entities\Course;
 use App\Http\Requests\Lesson\CreateRequest;
 use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Traits\Authorizable;
-use App\Usescases\Courses\Contracts\CreateLessonUsecaseInterface;
-use App\Usescases\Courses\Contracts\DeleteLessonUsescaseInterface;
-use App\Usescases\Courses\Contracts\UpdateLessonUsescaseInterface;
+use App\Usescases\Lessons\Contracts\CreateLessonUsecaseInterface;
+use App\Usescases\Lessons\Contracts\DeleteLessonUsescaseInterface;
+use App\Usescases\Lessons\Contracts\UpdateLessonUsescaseInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

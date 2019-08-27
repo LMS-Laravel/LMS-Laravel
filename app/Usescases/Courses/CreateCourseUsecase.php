@@ -8,6 +8,7 @@ use App\Entities\User;
 use App\Enums\Roles;
 use App\Repositories\Contracts\{CourseRepositoryInterface, UserRepositoryInterface};
 use App\Services\Contracts\ServiceRoleInterface;
+use App\Usescases\BaseUsecase;
 use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
 
 class CreateCourseUsecase extends BaseUsecase implements CreateCourseUsescaseInterface

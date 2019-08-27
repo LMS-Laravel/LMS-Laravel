@@ -5,7 +5,7 @@ namespace App\Usescases\Courses;
 
 
 use App\Repositories\Contracts\LessonRepositoryInterface;
-use App\Usescases\Courses\Contracts\ListLessonUsecaseInterface;
+use App\Usescases\Lessons\Contracts\ListLessonUsecaseInterface;
 
 class ListLessonUsecase implements ListLessonUsecaseInterface
 {

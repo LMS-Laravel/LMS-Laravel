@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Usescases\Courses\Contracts;
+namespace App\Usescases\Lessons\Contracts;
 
 
 

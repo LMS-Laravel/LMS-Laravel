@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Usescases\Courses;
+namespace App\Usescases;
 
 
 class BaseUsecase
