@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <chat :user="{{ auth()->user() }}"></chat>
+                <chat :user="{{ auth()->user() }}" :resource="0" :type="'stream'"></chat>
             </div>
         </div>
     </div>
