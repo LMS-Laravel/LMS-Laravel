@@ -19,4 +19,10 @@ class Lesson extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+
+    public function messages()
+    {
+        return $this->morphMany('App\Entities\Message', 'messageable')->with('user');
+    }
 }
