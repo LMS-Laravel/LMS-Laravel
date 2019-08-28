@@ -15,7 +15,7 @@ class AddChateableMessageTable extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
             $table->bigInteger('messageable_id')->after('message')->nullable()->unsigned();
-            $table->string('messageable_type')->after('resource_id')->nullable();
+            $table->string('messageable_type')->after('messageable_id')->nullable();
         });
     }
 

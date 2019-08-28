@@ -37,6 +37,9 @@ class MessageSent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PresenceChannel('chat');
+        $id = is_null($this->message->messageable_id) ? 0 : $this->message->messageable_id;
+        return new PresenceChannel('chat-'. $id);
     }
+
+
 }
