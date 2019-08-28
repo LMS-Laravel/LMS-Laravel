@@ -1,5 +1,2 @@
 <?php
-
-return [
-    'administration' => 'ADMIN',
-];
+return ["administration" => "ADMIN"];

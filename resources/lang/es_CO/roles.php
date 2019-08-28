@@ -1,14 +1,12 @@
 <?php
-
 return [
-    'role' => 'Rol',
-    'roles' => 'Roles',
-    'permission' => 'Permiso',
-    'permissions' => 'Permisos',
-    'admin' => 'Admin',
-    'teacher' => 'Profesor',
-    'user' => 'Usario',
-    'coordinador' => 'Coordinador',
-    'not_have' => 'No hay roles definidos'
-
+    "admin" => "Admin",
+    "coordinador" => "Coordinador",
+    "not_have" => "No hay roles definidos",
+    "permission" => "Permiso",
+    "permissions" => "Permisos",
+    "role" => "Rol",
+    "roles" => "Roles",
+    "teacher" => "Profesor",
+    "user" => "Usario"
 ];
