@@ -64,12 +64,13 @@
                 render: toolkit,
                 muted: false,
                 routeApi:  '/api/message',
+                chatName: 'chat'
             }
         },
         created() {
             this.fetchMessages();
-
-            Echo.join('chat')
+            this.makeNameChat();
+            Echo.join(this.chatName)
                 .here(user => {
                     this.users = user;
                 })
@@ -95,7 +96,7 @@
                     }
                     this.typingTimer = setTimeout(() => {
                         this.activeUser = false;
-                    }, 3000)
+                    }, 2000)
                 });
 
         },
@@ -143,7 +144,7 @@
                 this.newMessage = '';
             },
             sendTypingEvent(){
-                Echo.join('chat').whisper('typing', this.user);
+                Echo.join(this.chatName).whisper('typing', this.user);
             },
             isActiveUser(user){
                 return this.users.filter(u => u.id === user.id).length;
@@ -174,6 +175,9 @@
                 if(this.type !== 'stream'){
                     this.routeApi += "?resource="+this.resource+"&type=" + this.type;
                 }
+            },
+            makeNameChat(){
+                this.chatName += '-' + this.resource;
             }
         },
     }
