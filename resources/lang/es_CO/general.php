@@ -1,11 +1,9 @@
 <?php
-
 return [
-    'new' => 'Nuevo',
-    'save' => 'Guardar',
-    'close' => 'Cerrar',
-    'name' => 'Nombre',
-    'cancel' => 'Cancelar',
-    'show' => 'Ver',
+    "cancel" => "Cancelar",
+    "close" => "Cerrar",
+    "name" => "Nombre",
+    "new" => "Nuevo",
+    "save" => "Guardar",
+    "show" => "Ver"
 ];
-
