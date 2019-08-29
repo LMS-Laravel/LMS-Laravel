@@ -25,20 +25,20 @@ As the name suggests, LMS-laravel is built on the latest Laravel framework, and 
 * From the projects root run `cp .env.example .env`
 * Configure your `.env` file, with:
 
-1. Database settings
+    - Database settings
 ```
 DB_DATABASE=lms_laravel
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-2. Google recaptcha settings (which you can configure from https://www.google.com/recaptcha/admin/site)
+    - Google recaptcha settings (which you can configure from https://www.google.com/recaptcha/admin/site)
 ```
 NOCAPTCHA_SITEKEY=xxxxxxxxxx
 NOCAPTCHA_SECRET=xxxxxxxxxxx
 ```
 
-3. Email settings (using a provider like Mailgun, Amazon SES, etc)
+    - Email settings (using a provider like Mailgun, Amazon SES, etc)
 
 * Run `php artisan key:generate`
 * Run `php artisan migrate`
