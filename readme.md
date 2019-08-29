@@ -8,21 +8,47 @@
 - [License](#license)
 
 ### About
-LMS-laravel is a management system of educational content, want to facilitate the creation of a platform simple and intuitive.
-LMS-laravel is based as its name indicates in the framework laravel 5, and uses various packages created by other developers.
-* This application is still in development, if you want to collaborate with the development you can write to angelkurten@hotmail.com
+LMS-Laravel is a Learning Management System (or LMS) that facilitates the creation of educational content by allowing you to manage courses and learning modules. The platform is simple and intuitive and provides features for:
+1. The Teacher (course creator)
+2. The Student (or user)
+3. The Admin
+
+As the name suggests, LMS-laravel is built on the latest Laravel framework, and uses various open source packages.
+* This application is still in development, if you want to collaborate on the development, send us an email: 
+### Angel: angelkurten@hotmail.com
+### Kunal: kunalspunjabi@gmail.com
 
 ### Installation
-1. Run `git clone https://github.com/LMS-Laravel/LMS-Laravel.git LMS-Laravel`
-2. Run `composer install` (install composer beforehand)
-3. From the projects root run `cp .env.example .env`
-4. Configure your `.env` file
-5. Run `php artisan key:generate`
-6. Run `php artisan migrate`
-7. Run `npm i`
-8. For auth api `php artisan passport:install`
-8. Websocket server for chat `php artisan websockets:serve`
-9. Configurate credentials mailgun in .env
+* Run `git clone https://github.com/LMS-Laravel/LMS-Laravel.git LMS-Laravel`
+* `cd LMS-Laravel` 
+* Run `composer install` (install composer beforehand)
+* From the projects root run `cp .env.example .env`
+* Configure your `.env` file, with:
 
-### Laravel Auth License
+1. Database settings
+```
+DB_DATABASE=lms_laravel
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+2. Google recaptcha settings (which you can configure from https://www.google.com/recaptcha/admin/site)
+```
+NOCAPTCHA_SITEKEY=xxxxxxxxxx
+NOCAPTCHA_SECRET=xxxxxxxxxxx
+```
+
+3. Email settings (using a provider like Mailgun, Amazon SES, etc)
+
+* Run `php artisan key:generate`
+* Run `php artisan migrate`
+* For Auth API (to configure Laravel Passport), run: `php artisan passport:install`
+* Run `npm install`
+
+* Start the Laravel server `php artisan serve --port=8000`
+
+* Start the Websocket server (for chat functionality) `php artisan websockets:serve`
+
+
+### License
 LMS-Laravel is licensed under the MIT license. Enjoy!
