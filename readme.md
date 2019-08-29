@@ -14,9 +14,11 @@ LMS-Laravel is a Learning Management System (or LMS) that facilitates the creati
 3. The Admin
 
 As the name suggests, LMS-laravel is built on the latest Laravel framework, and uses various open source packages.
-* This application is still in development, if you want to collaborate on the development, send us an email: 
+This application is still in development, if you want to collaborate on the development, send us an email: 
+```
 #### Angel: angelkurten@hotmail.com
 #### Kunal: kunalspunjabi@gmail.com
+```
 
 ### Installation
 * Run `git clone https://github.com/LMS-Laravel/LMS-Laravel.git LMS-Laravel`
