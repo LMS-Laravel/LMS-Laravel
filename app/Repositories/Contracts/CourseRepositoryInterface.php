@@ -4,6 +4,8 @@
 namespace App\Repositories\Contracts;
 
 
+use Illuminate\Support\Collection;
+
 interface CourseRepositoryInterface
 {
     public function getModel();
@@ -14,7 +16,11 @@ interface CourseRepositoryInterface
 
     public function delete(int $id);
 
+    public function destroy(int $id);
+
     public function findById(int $id);
 
-    public function all();
+    public function all() : Collection;
+
+    public function allAvailable() : Collection;
 }

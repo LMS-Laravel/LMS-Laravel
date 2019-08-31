@@ -68,7 +68,8 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     * @param LessonRepositoryInterface $lessonRepository
      * @return \Illuminate\Http\Response
      */
     public function show($id, LessonRepositoryInterface $lessonRepository)
@@ -80,7 +81,8 @@ class LessonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     * @param LessonRepositoryInterface $lessonRepository
      * @return \Illuminate\Http\Response
      */
     public function edit($id, LessonRepositoryInterface $lessonRepository)
@@ -93,8 +95,9 @@ class LessonController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @param UpdateLessonUsescaseInterface $updateLessonUsescase
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id, UpdateLessonUsescaseInterface $updateLessonUsescase)
@@ -105,13 +108,14 @@ class LessonController extends Controller
         } catch (\Exception $e){
             flash('No se ha podido guardar la lección', 'error');
         }
-        return redirect()->route('courses.edit', $request->course_id);
+        return  redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     * @param DeleteLessonUsescaseInterface $deleteLessonUsescase
      * @return \Illuminate\Http\Response
      */
     public function destroy($id, DeleteLessonUsescaseInterface $deleteLessonUsescase)

@@ -25,6 +25,7 @@ class CreateCoursesTable extends Migration
 
             $table->foreign('teacher_id')->references('id')->on('users');
 
+            $table->enum('status', ['enabled', 'disabled'])->default('enabled');
 
             $table->timestamps();
         });

@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index(CourseRepositoryInterface $courseRepository)
     {
-        $courses = $courseRepository->all();
+        $courses = $courseRepository->allAvailable();
 
         return view('home', compact('courses'));
     }

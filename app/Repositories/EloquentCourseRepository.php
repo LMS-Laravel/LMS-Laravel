@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Entities\Course;
 use App\Repositories\Contracts\CourseRepositoryInterface;
+use Illuminate\Support\Collection;
 
 class EloquentCourseRepository implements CourseRepositoryInterface
 {
@@ -27,7 +28,12 @@ class EloquentCourseRepository implements CourseRepositoryInterface
 
     public function delete(int $id)
     {
-        return $this->getModel()->find($id)->delete();
+        return $this->getModel()->findOrFail($id)->update(['status' => 'disabled']);
+    }
+
+    public function destroy(int $id)
+    {
+        return $this->getModel()->findOrFail($id)->delete();
     }
 
     public function findById(int $id)
@@ -35,8 +41,13 @@ class EloquentCourseRepository implements CourseRepositoryInterface
         return $this->getModel()->findOrFail($id);
     }
 
-    public function all()
+    public function all() : Collection
     {
         return $this->getModel()->with('teacher')->get();
+    }
+
+    public function allAvailable() : Collection
+    {
+        return $this->getModel()->all()->where('status', 'enabled');
     }
 }

@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Course extends Model
 {
 
-    protected $fillable = ['name', 'description', 'teacher_id'];
+    protected $fillable = ['name', 'description', 'teacher_id', 'status'];
     /**
      * @return BelongsTo
      */
