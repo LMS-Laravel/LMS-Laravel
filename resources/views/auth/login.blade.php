@@ -38,13 +38,23 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"></label>
+                        @if(config('captcha.enable', false))
 
-                            <div class="col-md-6">
-                                {!! NoCaptcha::display() !!}
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    @error('g-recaptcha-response')
+                                    <span class="alert alert-error small alert-dismissible fade show">
+                                        <strong>{{ $message }}</strong>
+                                        <button type="button" class="close small" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </span>
+                                    @enderror
+                                    {!! NoCaptcha::display() !!}
+                                </div>
                             </div>
-                        </div>
+                        @endif
+
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
@@ -76,5 +86,7 @@
         </div>
     </div>
 </div>
-{!! NoCaptcha::renderJs() !!}
+@if(config('captcha.enable', false))
+    {!! NoCaptcha::renderJs() !!}
+@endif
 @endsection

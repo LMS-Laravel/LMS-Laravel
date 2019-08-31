@@ -75,12 +75,22 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"></label>
-                            <div class="col-md-6">
-                                {!! NoCaptcha::display() !!}
+                        @if(config('captcha.enable', false))
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    @error('g-recaptcha-response')
+                                    <span class="alert alert-error small alert-dismissible fade show">
+                                        <strong>{{ $message }}</strong>
+                                        <button type="button" class="close small" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </span>
+                                    @enderror
+                                    {!! NoCaptcha::display() !!}
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -95,5 +105,7 @@
         </div>
     </div>
 </div>
-{!! NoCaptcha::renderJs() !!}
+@if(config('captcha.enable', false))
+    {!! NoCaptcha::renderJs() !!}
+@endif
 @endsection

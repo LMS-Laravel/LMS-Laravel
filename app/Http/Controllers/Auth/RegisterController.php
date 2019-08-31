@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Entities\User;
 use App\Http\Controllers\Controller;
-use App\Usescases\Contracts\AssignRoleUserUsecaseInterface;
+use App\Services\Verification\MasterVerifier;
+use App\Services\Verifiers\GoogleRecaptchaVerifier;
+use App\Usescases\Users\Contracts\AssignRoleUserUsecaseInterface;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -24,6 +27,10 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    protected $verifiers = [
+        GoogleRecaptchaVerifier::class
+    ];
 
     /**
      * Where to redirect users after registration.
@@ -45,10 +52,24 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function register(Request $request)
+    {
+       app(MasterVerifier::class)->verify($request->all(), $this->verifiers);
+
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -58,14 +79,13 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users,username'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'g-recaptcha-response' => 'required|captcha'
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Entities\User
      */
     protected function create(array $data)
