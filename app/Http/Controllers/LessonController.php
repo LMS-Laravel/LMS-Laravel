@@ -106,7 +106,6 @@ class LessonController extends Controller
             $updateLessonUsescase->handle($id, $request->all());
             flash('Lección guardada correctamente');
         } catch (\Exception $e){
-            dd($e);
             flash('No se ha podido guardar la lección', 'error');
         }
         return  redirect()->back();
@@ -125,7 +124,6 @@ class LessonController extends Controller
             $deleteLessonUsescase->handle($id);
             flash('Lección eliminada correctamente');
         } catch (\Exception $e){
-            dd($e);
             flash('No se ha podido eliminar la lección', 'error');
         }
         return redirect()->back();

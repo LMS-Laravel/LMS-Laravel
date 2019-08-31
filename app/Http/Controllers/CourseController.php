@@ -74,12 +74,7 @@ class CourseController extends Controller
 
     public function destroy($id, DeleteCourseUsecaseInterface $courseUsecase)
     {
-        try{
-            $courseUsecase->handle($id);
-        } catch (\Exception $exception)
-        {
-            dd($exception);
-        }
+        $courseUsecase->handle($id);
         return redirect()->route('courses.index');
     }
 }
