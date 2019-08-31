@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Roles;
 use App\Http\Requests\Course\CreateRequest;
+use App\Http\Requests\Course\UpdateRequest;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Traits\Authorizable;
@@ -38,7 +40,7 @@ class CourseController extends Controller
 
     public function create(UserRepositoryInterface $userRepository)
     {
-        $users = $userRepository->all()->pluck('name', 'id');
+        $users = $userRepository->all(Roles::TEACHER)->pluck('name', 'id');
         return view('courses.create', compact('users'));
     }
 
@@ -58,21 +60,26 @@ class CourseController extends Controller
     public function edit($id, UserRepositoryInterface $userRepository, CourseRepositoryInterface $courseRepository)
     {
         $course = $courseRepository->findById($id);
-        $users = $userRepository->all()->pluck('name', 'id');
-        $lessons = $course->lessons->where('status', 'enabled');
+        $users = $userRepository->all(Roles::TEACHER)->pluck('name', 'id');
+        $lessons = $course->lessons->all();
 
         return view('courses.edit', compact('course', 'users', 'lessons'));
     }
 
-    public function update($id, CreateRequest $request, UpdateCourseUsecaseInterface $courseUsecase)
+    public function update($id, UpdateRequest $request, UpdateCourseUsecaseInterface $courseUsecase)
     {
         $courseUsecase->handle($id, $request->all());
-        return redirect()->route('courses.index');
+        return redirect()->back();
     }
 
     public function destroy($id, DeleteCourseUsecaseInterface $courseUsecase)
     {
-        $courseUsecase->handle($id);
+        try{
+            $courseUsecase->handle($id);
+        } catch (\Exception $exception)
+        {
+            dd($exception);
+        }
         return redirect()->route('courses.index');
     }
 }

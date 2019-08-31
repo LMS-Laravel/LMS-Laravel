@@ -28,7 +28,7 @@ class EloquentLessonRepository  implements LessonRepositoryInterface
     {
         $model = $this->getModel()->find($id);
         $model->update($data);
-        $model->lb_content = $data['content'];
+        $model->lb_content = $data['content'] ?? $model->lb_content;
         return $model;
     }
 
@@ -40,6 +40,11 @@ class EloquentLessonRepository  implements LessonRepositoryInterface
     public function delete(int $id)
     {
         return $this->getModel()->findOrFail($id)->update(['status' => 'disabled']);
+    }
+
+    public function destroy(int $id)
+    {
+        return $this->getModel()->findOrFail($id)->delete();
     }
 
     public function all() : Collection
