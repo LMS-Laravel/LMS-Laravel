@@ -6,4 +6,5 @@ return [
     'options' => [
         'timeout' => 30,
     ],
+    'enable' => env('ENABLE_CAPTCHA', false)
 ];
