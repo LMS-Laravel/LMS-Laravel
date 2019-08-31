@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\Verification\MasterVerifier;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function validateLogin(Request $request)
+    /*public function validateLogin(Request $request)
     {
 
         $request->validate([
@@ -46,5 +47,10 @@ class LoginController extends Controller
             'password' => 'required|string',
             'g-recaptcha-response' => 'required|captcha'
         ]);
+    }*/
+
+    public function validateLogin(Request $request)
+    {
+        app(MasterVerifier::class)->verify($request->all());
     }
 }
