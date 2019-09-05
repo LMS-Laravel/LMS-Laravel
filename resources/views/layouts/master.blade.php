@@ -193,5 +193,6 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')
+@stack('js')
 </body>
 </html>
