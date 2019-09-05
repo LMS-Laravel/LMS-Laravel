@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="description">@lang('course/fields.description')</label>
-                <textarea id="description" name="description" class="form-control" rows="4"></textarea>
+                <textarea id="description" name="description" class="form-control" rows="4" maxlength="150"></textarea>
                 @if ($errors->has('description'))
                     <span class="help-block">
                         <strong class="text-danger">{{ $errors->first('description') }}</strong>
@@ -48,8 +48,24 @@
 </div>
 
 </section>
-
 <!-- /.content -->
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/jquery-3.1.1.slim.min.js') }}"></script>
+<script src="{{ asset('js/remaining_characters.js') }}"></script>
+<script type="text/javascript">
+    $("#description").remainingCharacters({
+      label: {
+        tag: 'p',
+        id: null,
+        class: 'badge badge-primary',
+        invalidClass: 'is-invalid'
+      },
+      text: '{n} characters remaining'
+    });
+
+</script>
 @endsection
 
 
