@@ -11,8 +11,9 @@ interface UserRepositoryInterface
 {
 
     public function getModel() : User;
-    public function all() : Collection;
+    public function all($role = false) : Collection;
     public function findById(int $id) : User;
+
 
 
 }

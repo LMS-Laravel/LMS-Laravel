@@ -4,6 +4,7 @@
 namespace App\Usescases\Courses;
 
 
+use App\Enums\LessonStatus;
 use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Usescases\Lessons\Contracts\DeleteLessonUsescaseInterface;
 
@@ -21,7 +22,8 @@ class DeleteLessonUsecase implements DeleteLessonUsescaseInterface
 
     public function handle(int $id)
     {
-        $this->lessonRepository->delete($id);
+        $lesson = $this->lessonRepository->findById($id);
+        return $lesson->status == LessonStatus::ENABLED ? $this->lessonRepository->delete($id) : $this->lessonRepository->destroy($id);
     }
 
 }

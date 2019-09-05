@@ -18,6 +18,8 @@ interface LessonRepositoryInterface
 
     public function delete(int $id);
 
+    public function destroy(int $id);
+
     public function all() : Collection;
 
     public function allAvailable() : Collection;

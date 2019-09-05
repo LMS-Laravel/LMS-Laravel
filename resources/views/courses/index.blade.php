@@ -31,9 +31,15 @@
                                 <td>{{ $course->description }}</td>
                                 <td>{{ $course->teacher->name }}</td>
                                 <td>
-                                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
-                                    {{ Form::open(['url' => route('courses.destroy', $course->id), 'method' => 'DELETE']) }}
-                                        <input type="submit" value="@lang('course/actions.delete')" class="btn btn-danger float-right">
+                                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary float-left"><i class="fa fa-edit"></i></a>
+                                    @if($course->status == \App\Enums\CourseStatus::DISABLED)
+                                        {{ Form::open(['url' => route('courses.update', $course->id), 'method' => 'PUT', 'class' => 'form-inline']) }}
+                                            <input type="hidden" name="status" value="{{ \App\Enums\CourseStatus::ENABLED }}">
+                                            <button type="submit" value="" class="btn btn-success float-right"><i class="fa fa-eye"></i></button>
+                                        {{ Form::close() }}
+                                    @endif
+                                    {{ Form::open(['url' => route('courses.destroy', $course->id), 'method' => 'DELETE', 'class' => 'form-inline']) }}
+                                    <button type="submit" value="@lang('course/actions.delete')" class="btn btn-danger float-right"> <i class="fa fa-trash"></i> </button>
                                     {{ Form::close() }}
                                 </td>
                             </tr>

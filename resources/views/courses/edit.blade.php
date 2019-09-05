@@ -83,8 +83,14 @@
                                         <td>{{ $lesson->title }}</td>
                                         <td>
                                             <a href="{{ route('lessons.edit', $lesson->id) }}" class="btn btn-primary float-left">@lang('course/actions.edit')</a>
+                                            @if($lesson->status == \App\Enums\LessonStatus::DISABLED)
+                                                {{ Form::open(['url' => route('lessons.update', $lesson->id), 'method' => 'PUT']) }}
+                                                    <input type="hidden" name="status" value="{{ \App\Enums\LessonStatus::ENABLED }}">
+                                                    <button type="submit" value="" class="btn btn-success float-right">@lang('lesson/actions.restore')</button>
+                                                {{ Form::close() }}
+                                            @endif
                                             {{ Form::open(['url' => route('lessons.destroy', $lesson->id), 'method' => 'DELETE']) }}
-                                                <input type="submit" value="@lang('lesson/actions.delete')" class="btn btn-danger float-right">
+                                                <button type="submit" value="" class="btn btn-danger float-right">@lang('lesson/actions.delete')</button>
                                             {{ Form::close() }}
                                         </td>
                                     </tr>
