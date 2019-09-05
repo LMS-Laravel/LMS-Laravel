@@ -111,7 +111,11 @@
         </div>
     </div>
 </div>
-@push('js')
+
+<!-- /.content -->
+@endsection
+
+@section('scripts')
 <script src="{{ asset('js/jquery-3.1.1.slim.min.js') }}"></script>
 <script src="{{ asset('js/remaining_characters.js') }}"></script>
 <script type="text/javascript">
@@ -126,8 +130,4 @@
     });
 
 </script>
-@endpush
-<!-- /.content -->
 @endsection
-
-
