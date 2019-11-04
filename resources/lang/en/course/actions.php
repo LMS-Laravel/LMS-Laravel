@@ -6,5 +6,6 @@ return [
     'edit' => 'Edit',
     'update' => 'Update',
     'delete' => 'Delete',
-    'index' => 'List of courses'
+    'index' => 'List of courses',
+    'restore' => 'Recovery'
 ];

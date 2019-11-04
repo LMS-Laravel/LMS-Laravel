@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-5">
-                                <h4>@lang('lesson/lessons.lessons') - {{$course->name}}</h4>
+                                <h5>{{$course->name}}</h5>
                             </div>
                         </div>
                     </div>

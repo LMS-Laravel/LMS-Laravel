@@ -17,9 +17,9 @@ class EloquentUserRepository implements UserRepositoryInterface
         return new User();
     }
 
-    public function all(): Collection
+    public function all($role = false): Collection
     {
-        return $this->getModel()->all();
+        return $role ? $this->getModel()->role($role)->get() : $this->getModel()->all();
     }
 
     public function findById(int $id): User
