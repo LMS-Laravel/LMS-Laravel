@@ -60,7 +60,7 @@
                 typingTimer: false,
                 left:true,
                 users:[],
-                sound: 'sms.mp3',
+                sound: '/sms.mp3',
                 render: toolkit,
                 muted: false,
                 routeApi:  '/api/message',
@@ -152,8 +152,7 @@
             isAdmin(user){
                 return user.id === 1;
             },
-            ucFirst(string)
-            {
+            ucFirst(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             },
             changeVolumen(){
