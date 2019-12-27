@@ -13,7 +13,7 @@ class Lesson extends Model
 {
     use Gutenbergable;
 
-    protected $lb_content;
+    public $lb_content;
 
     protected  $fillable = ['title', 'content', 'course_id', 'status'];
 
