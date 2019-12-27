@@ -13,6 +13,8 @@ class Lesson extends Model
 {
     use Gutenbergable;
 
+    protected $lb_content;
+
     protected  $fillable = ['title', 'content', 'course_id', 'status'];
 
     public function course() : BelongsTo
