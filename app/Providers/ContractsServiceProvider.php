@@ -4,17 +4,9 @@
 namespace App\Providers;
 
 
-use App\Repositories\Contracts\CourseRepositoryInterface;
-use App\Repositories\Contracts\LessonRepositoryInterface;
-use App\Repositories\Contracts\PermissionRepositoryInterface;
-use App\Repositories\Contracts\RoleRepositoryInterface;
-use App\Repositories\Contracts\UserRepositoryInterface;
-use App\Repositories\EloquentCourseRepository;
-use App\Repositories\EloquentLessonRepository;
-use App\Repositories\EloquentPermissionRepository;
-use App\Repositories\EloquentRoleRepository;
-use App\Repositories\EloquentUserRepository;
-use App\Services\Contracts\ServiceRoleInterface;
+use App\Repositories\Contracts\{CourseRepositoryInterface, LessonRepositoryInterface, PermissionRepositoryInterface, RoleRepositoryInterface, UserRepositoryInterface};
+use App\Repositories\{EloquentCourseRepository, EloquentUserRepository, EloquentLessonRepository, EloquentPermissionRepository, EloquentRoleRepository};
+use App\Services\Roles\Contracts\ServiceRoleInterface;
 use App\Services\Roles\SpatieServiceRole;
 use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
 use App\Usescases\Lessons\Contracts\CreateLessonUsecaseInterface;

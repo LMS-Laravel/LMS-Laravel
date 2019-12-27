@@ -5,7 +5,7 @@ namespace App\Services\Roles;
 
 
 use App\Entities\User;
-use App\Services\Contracts\ServiceRoleInterface;
+use App\Services\Roles\Contracts\ServiceRoleInterface;
 
 class SpatieServiceRole implements ServiceRoleInterface
 {
