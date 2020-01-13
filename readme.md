@@ -23,6 +23,7 @@ LMS-laravel is based as its name indicates in the framework laravel 5, and uses 
 8. For auth api `php artisan passport:install`
 8. Websocket server for chat `php artisan websockets:serve`
 9. Configurate credentials mailgun in .env
+10. For disable Captcha add `ENABLE_CAPTCHA=false` in `.env` file
 
 ### Laravel Auth License
 LMS-Laravel is licensed under the MIT license. Enjoy!
