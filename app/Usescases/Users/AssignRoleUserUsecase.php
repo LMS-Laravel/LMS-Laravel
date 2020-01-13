@@ -5,11 +5,11 @@ namespace App\Usescases\Users;
 
 
 use App\Repositories\Contracts\UserRepositoryInterface;
-use App\Services\Contracts\ServiceRoleInterface;
-use App\Usescases\Users\Contracts\AssingRoleUserUsecaseInterface;
+use App\Services\Roles\Contracts\ServiceRoleInterface;
+use App\Usescases\Users\Contracts\AssignRoleUserUsecaseInterface;
 
 
-class AssignRoleUserUsecase implements AssingRoleUserUsecaseInterface
+class AssignRoleUserUsecase implements AssignRoleUserUsecaseInterface
 {
 
     /**

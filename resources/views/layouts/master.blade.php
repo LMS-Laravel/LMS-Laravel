@@ -157,6 +157,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
+                @include('sweetalert::alert')
                 @include('flash::message')
                 <div class="row">
                     @yield('content')

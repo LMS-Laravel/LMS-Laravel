@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\Contracts;
+namespace App\Services\Roles\Contracts;
 
 
 use App\Entities\User;
