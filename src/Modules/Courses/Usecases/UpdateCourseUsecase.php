@@ -5,7 +5,7 @@ namespace LMS\Modules\Courses\Usescases;
 
 
 use App\Repositories\Contracts\CourseRepositoryInterface;
-use App\Usescases\Courses\Contracts\UpdateCourseUsecaseInterface;
+use LMS\Modules\Courses\Usescases\Contracts\UpdateCourseUsecaseInterface;
 
 class UpdateCourseUsecase implements UpdateCourseUsecaseInterface
 {

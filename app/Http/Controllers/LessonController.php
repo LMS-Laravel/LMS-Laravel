@@ -68,7 +68,7 @@ class LessonController extends Controller
      *
      * @param int $id
      * @param LessonRepositoryInterface $lessonRepository
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id, LessonRepositoryInterface $lessonRepository)
     {

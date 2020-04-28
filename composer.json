@@ -28,7 +28,7 @@
         "realrashid/sweet-alert": "^3.0",
         "spatie/laravel-google-calendar": "^2.2",
         "spatie/laravel-permission": "^3.2",
-        "van-ons/laraberg": "^1.0@RC"
+        "van-ons/laraberg": "^1.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -5,7 +5,7 @@ namespace LMS\Modules\Lessons\Usescases;
 
 
 use App\Repositories\Contracts\LessonRepositoryInterface;
-use App\Usescases\Lessons\Contracts\UpdateLessonUsescaseInterface;
+use LMS\Modules\Lessons\Usescases\Contracts\UpdateLessonUsescaseInterface;
 
 class UpdateLessonUsecase implements UpdateLessonUsescaseInterface
 {

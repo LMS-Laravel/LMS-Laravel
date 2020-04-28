@@ -6,7 +6,7 @@ namespace LMS\Modules\Lessons\Usescases;
 
 use App\Enums\LessonStatus;
 use App\Repositories\Contracts\LessonRepositoryInterface;
-use App\Usescases\Lessons\Contracts\DeleteLessonUsescaseInterface;
+use LMS\Modules\Lessons\Usescases\Contracts\DeleteLessonUsescaseInterface;
 
 class DeleteLessonUsecase implements DeleteLessonUsescaseInterface
 {
