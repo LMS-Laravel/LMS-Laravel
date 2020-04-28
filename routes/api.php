@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('message','MessageController')->middleware('auth:api');;
+Route::apiResource('message','MessageController')->middleware('auth:api');

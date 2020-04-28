@@ -52,7 +52,8 @@
             "app/helpers.php"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "LMS\\" : "src/"
         },
         "classmap": [
             "database/seeds",

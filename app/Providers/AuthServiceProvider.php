@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // here's the new stuff
-        Auth::provider('username', function ($app) {
+        Auth::provider('custom', function ($app) {
             return new CustomAuthServiceProvider($app->make(HasherContract::class), User::class);
         });
 
