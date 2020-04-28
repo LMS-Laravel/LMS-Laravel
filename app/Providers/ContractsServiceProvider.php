@@ -9,10 +9,25 @@ use App\Repositories\{EloquentCourseRepository, EloquentUserRepository, Eloquent
 
 
 use Illuminate\Support\ServiceProvider;
-use LMS\Modules\Courses\Usescases\Contracts\{CreateCourseUsescaseInterface, ListCourseUsecaseInterface, DeleteCourseUsecaseInterface, UpdateCourseUsecaseInterface};
+use LMS\Modules\Courses\Usescases\Contracts\{CreateCourseUsescaseInterface,
+    ListCourseUsecaseInterface,
+    DeleteCourseUsecaseInterface,
+    ShowCourseUsecaseInterface,
+    SubscribeCourseUsecaseInterface,
+    UpdateCourseUsecaseInterface};
 use LMS\Modules\Courses\Usescases\{CreateCourseUsecase, ListCourseUsecase, UpdateCourseUsecase, DeleteCourseUsecase};
-use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface, ListLessonUsecaseInterface, UpdateLessonUsescaseInterface, DeleteLessonUsescaseInterface};
-use LMS\Modules\Lessons\Usescases\{CreateLessonUsecase, ListLessonUsecase, UpdateLessonUsecase, DeleteLessonUsecase};
+use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface,
+    ListLessonUsecaseInterface,
+    ShowLessonUsecaseInterface,
+    UpdateLessonUsescaseInterface,
+    DeleteLessonUsescaseInterface};
+use LMS\Modules\Lessons\Usescases\{CreateLessonUsecase,
+    ListLessonUsecase,
+    ShowLessonUsecase,
+    UpdateLessonUsecase,
+    DeleteLessonUsecase};
+use LMS\Modules\Courses\Usecases\ShowCourseUsecase;
+use LMS\Modules\Courses\Usecases\SubscribeCourseUsecase;
 use LMS\Modules\Users\Services\Roles\Contracts\ServiceRoleInterface;
 use LMS\Modules\Users\Services\Roles\SpatieServiceRole;
 use LMS\Modules\Users\Usescases\AssignRoleUserUsecase;
@@ -43,7 +58,9 @@ class ContractsServiceProvider extends ServiceProvider
         UpdateLessonUsescaseInterface::class => UpdateLessonUsecase::class,
         DeleteLessonUsescaseInterface::class => DeleteLessonUsecase::class,
         ListLessonUsecaseInterface::class => ListLessonUsecase::class,
-
+        ShowLessonUsecaseInterface::class => ShowLessonUsecase::class,
+        ShowCourseUsecaseInterface::class => ShowCourseUsecase::class,
+        SubscribeCourseUsecaseInterface::class => SubscribeCourseUsecase::class,
 
         //Services
         ServiceRoleInterface::class => SpatieServiceRole::class

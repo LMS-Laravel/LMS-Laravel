@@ -41,3 +41,56 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script>
+        const subscribed = Boolean({!! $subscribed !!})
+        if(!subscribed){
+            Swal.fire({
+                title: 'Do you want subscribe this course',
+                inputAttributes: {
+                    autocapitalize: 'true'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Subscribe',
+                showLoaderOnConfirm: true,
+                preConfirm: (login) => {
+                    return $.ajax({
+                        type: "POST",
+                        url: `/api/subscribe/{!! $course->id !!}`,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        cache: false,
+                        success: function(response) {
+                            swal(
+                                "Sccess!",
+                                "Your note has been saved!",
+                                "success"
+                            )
+                        },
+                        failure: function (response) {
+                            swal(
+                                "Internal Error",
+                                "Oops, your note was not saved.", // had a missing comma
+                                "error"
+                            )
+                        }
+                    });
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire({
+                        title: `Suscrito`,
+                    })
+                }
+                if(result.dismiss) {
+                    window.location.replace("{!! route('home') !!}");
+                }
+                console.log(result);
+            })
+        }
+
+    </script>
+@endsection

@@ -193,6 +193,7 @@
 
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

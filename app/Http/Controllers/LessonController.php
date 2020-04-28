@@ -8,7 +8,10 @@ use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Traits\Authorizable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface, DeleteLessonUsescaseInterface, UpdateLessonUsescaseInterface};
+use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface,
+    DeleteLessonUsescaseInterface,
+    ShowLessonUsecaseInterface,
+    UpdateLessonUsescaseInterface};
 
 class LessonController extends Controller
 {
@@ -67,13 +70,19 @@ class LessonController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @param LessonRepositoryInterface $lessonRepository
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param ShowLessonUsecaseInterface $lessonUsecase
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function show($id, LessonRepositoryInterface $lessonRepository)
+    public function show($id, ShowLessonUsecaseInterface $lessonUsecase)
     {
-        $lesson = $lessonRepository->findById($id);
-        return view('lessons.show', compact('lesson'));
+        $response = $lessonUsecase->handle($id, Auth::user()->id);
+        $lesson = $response['data']['lesson'];
+        $subscribed = $response['data']['subscribed'];
+        if(!$subscribed){
+            return redirect()->route("courses.show", $lesson->course->id);
+        }
+
+        return view('lessons.show', compact('lesson', 'subscribed'));
     }
 
     /**
@@ -81,7 +90,7 @@ class LessonController extends Controller
      *
      * @param int $id
      * @param LessonRepositoryInterface $lessonRepository
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id, LessonRepositoryInterface $lessonRepository)
     {

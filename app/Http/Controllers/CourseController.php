@@ -8,8 +8,16 @@ use App\Http\Requests\Course\UpdateRequest;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Traits\Authorizable;
-use LMS\Modules\Courses\Usescases\Contracts\{ListCourseUsecaseInterface, CreateCourseUsescaseInterface, UpdateCourseUsecaseInterface, DeleteCourseUsecaseInterface};
-use LMS\Modules\Lessons\Usescases\Contracts\ListLessonUsecaseInterface;
+use Illuminate\Support\Facades\Auth;
+use LMS\Modules\Courses\Usescases\Contracts\{ListCourseUsecaseInterface,
+    CreateCourseUsescaseInterface,
+    ShowCourseUsecaseInterface,
+    UpdateCourseUsecaseInterface,
+    DeleteCourseUsecaseInterface,
+    SubscribeCourseUsecaseInterface
+};
+
+
 
 
 class CourseController extends Controller
@@ -29,11 +37,13 @@ class CourseController extends Controller
         return view('courses.index', compact('courses'));
     }
 
-    public function show($id, ListLessonUsecaseInterface $listLessonUsecase, CourseRepositoryInterface $courseRepository)
+    public function show($id, ShowCourseUsecaseInterface $showCourseUsecase)
     {
-        $lessons = $listLessonUsecase->handle();
-        $course = $courseRepository->findById($id);
-        return view('courses.show', compact('lessons', 'course'));
+        $response = $showCourseUsecase->handle($id, Auth::user()->id);
+        $course = $response['data']['course'];
+        $lessons = $response['data']['lessons'];
+        $subscribed = $response['data']['subscribed'];
+        return view('courses.show', compact('lessons', 'course', 'subscribed'));
     }
 
     public function create(UserRepositoryInterface $userRepository)
@@ -74,5 +84,11 @@ class CourseController extends Controller
     {
         $courseUsecase->handle($id);
         return redirect()->route('courses.index');
+    }
+
+    public function subscribe($id, SubscribeCourseUsecaseInterface $subscribeCourseUsecase){
+        $response = $subscribeCourseUsecase->handle(Auth::user()->id, $id);
+
+        return response()->json($response);
     }
 }

@@ -23,4 +23,8 @@ interface CourseRepositoryInterface
     public function all() : Collection;
 
     public function allAvailable() : Collection;
+
+    public function subscribe(int $course_id, int $user_id);
+
+    public function checkSubscribed(int $course_id, int $user_id);
 }

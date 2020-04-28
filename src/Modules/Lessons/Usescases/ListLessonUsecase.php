@@ -20,8 +20,8 @@ class ListLessonUsecase implements ListLessonUsecaseInterface
         $this->lessonRepository = $lessonRepository;
     }
 
-    public function handle()
+    public function handle(int $course_id)
     {
-        return $this->lessonRepository->allAvailable();
+        return $this->lessonRepository->allAvailable($course_id);
     }
 }
