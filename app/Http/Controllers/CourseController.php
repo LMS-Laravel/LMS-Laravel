@@ -8,11 +8,9 @@ use App\Http\Requests\Course\UpdateRequest;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Traits\Authorizable;
-use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
-use App\Usescases\Courses\Contracts\DeleteCourseUsecaseInterface;
-use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
-use App\Usescases\Lessons\Contracts\ListLessonUsecaseInterface;
-use App\Usescases\Courses\Contracts\UpdateCourseUsecaseInterface;
+use LMS\Modules\Courses\Usescases\Contracts\{ListCourseUsecaseInterface, CreateCourseUsescaseInterface, UpdateCourseUsecaseInterface, DeleteCourseUsecaseInterface};
+use LMS\Modules\Lessons\Usescases\Contracts\ListLessonUsecaseInterface;
+
 
 class CourseController extends Controller
 {

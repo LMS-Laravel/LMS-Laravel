@@ -8,8 +8,9 @@ use App\Entities\User;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
-use App\Usescases\BaseUsecase;
-use App\Usescases\Lessons\Contracts\CreateLessonUsecaseInterface;
+use LMS\Modules\Core\Usescases\BaseUsecase;
+use LMS\Modules\Lessons\Usescases\Contracts\CreateLessonUsecaseInterface;
+
 
 class CreateLessonUsecase extends BaseUsecase implements CreateLessonUsecaseInterface
 {

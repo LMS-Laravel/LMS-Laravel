@@ -17,14 +17,14 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">@lang('lesson/fields.title')</label>
-                    <input type="text" id="title"  name="title" class="form-control">
+                    <input type="text" id="title" value="{{old('title')}}"  name="title" class="form-control">
                     @if ($errors->has('title'))
                         <span class="help-block">
                         <strong class="text-danger">{{ $errors->first('title') }}</strong>
                     </span>
                     @endif
                 </div>
-                <textarea id="laraberg" name="content" hidden></textarea>
+                <textarea id="laraberg" {{old('content')}} name="content" hidden></textarea>
                 @if ($errors->has('content'))
                     <span class="help-block">
                         <strong class="text-danger">{{ $errors->first('content') }}</strong>

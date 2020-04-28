@@ -45,6 +45,7 @@ Email settings (using a provider like Mailgun, Amazon SES, etc)
 * Run `php artisan migrate`
 * For Auth API (to configure Laravel Passport), run: `php artisan passport:install`
 * Run `npm install`
+* Run `php artisan db:seed`
 
 * Start the Laravel server `php artisan serve --port=8000`
 

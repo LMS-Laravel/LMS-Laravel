@@ -6,29 +6,17 @@ namespace App\Providers;
 
 use App\Repositories\Contracts\{CourseRepositoryInterface, LessonRepositoryInterface, PermissionRepositoryInterface, RoleRepositoryInterface, UserRepositoryInterface};
 use App\Repositories\{EloquentCourseRepository, EloquentUserRepository, EloquentLessonRepository, EloquentPermissionRepository, EloquentRoleRepository};
-use App\Services\Roles\Contracts\ServiceRoleInterface;
-use App\Services\Roles\SpatieServiceRole;
-use App\Usescases\Courses\Contracts\CreateCourseUsescaseInterface;
-use App\Usescases\Lessons\Contracts\CreateLessonUsecaseInterface;
-use App\Usescases\Lessons\Contracts\DeleteLessonUsescaseInterface;
-use App\Usescases\Courses\Contracts\ListCourseUsecaseInterface;
-use App\Usescases\Lessons\Contracts\ListLessonUsecaseInterface;
-use App\Usescases\Courses\Contracts\UpdateCourseUsecaseInterface;
-use App\Usescases\Courses\Contracts\DeleteCourseUsecaseInterface;
-use App\Usescases\Lessons\Contracts\UpdateLessonUsescaseInterface;
-use App\Usescases\Courses\CreateCourseUsecase;
-use App\Usescases\Courses\CreateLessonUsecase;
-use App\Usescases\Courses\DeleteLessonUsecase;
-use App\Usescases\Courses\ListCourseUsecase;
-use App\Usescases\Courses\ListLessonUsecase;
-use App\Usescases\Courses\UpdateCourseUsecase;
-use App\Usescases\Courses\DeleteCourseUsecase;
-use App\Usescases\Courses\UpdateLessonUsecase;
-use App\Usescases\Users\AssignRoleUserUsecase;
-use App\Usescases\Users\Contracts\AssignRoleUserUsecaseInterface;
+
 
 use Illuminate\Support\ServiceProvider;
-
+use LMS\Modules\Courses\Usescases\Contracts\{CreateCourseUsescaseInterface, ListCourseUsecaseInterface, DeleteCourseUsecaseInterface, UpdateCourseUsecaseInterface};
+use LMS\Modules\Courses\Usescases\{CreateCourseUsecase, ListCourseUsecase, UpdateCourseUsecase, DeleteCourseUsecase};
+use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface, ListLessonUsecaseInterface, UpdateLessonUsescaseInterface, DeleteLessonUsescaseInterface};
+use LMS\Modules\Lessons\Usescases\{CreateLessonUsecase, ListLessonUsecase, UpdateLessonUsecase, DeleteLessonUsecase};
+use LMS\Modules\Users\Services\Roles\Contracts\ServiceRoleInterface;
+use LMS\Modules\Users\Services\Roles\SpatieServiceRole;
+use LMS\Modules\Users\Usescases\AssignRoleUserUsecase;
+use LMS\Modules\Users\Usescases\Contracts\AssignRoleUserUsecaseInterface;
 
 
 class ContractsServiceProvider extends ServiceProvider
@@ -68,7 +56,7 @@ class ContractsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+
     }
 
     /**

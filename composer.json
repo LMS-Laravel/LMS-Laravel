@@ -16,15 +16,16 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "~6.0",
         "laracasts/flash": "^3.0",
-        "laravel/framework": "^6.0",
+        "laravel/framework": "^7.0",
         "laravel/helpers": "^1.1",
         "laravel/passport": "^7.3",
-        "laravel/tinker": "^1.0",
+        "laravel/tinker": "^2.0",
+        "laravel/ui" : "^2.0",
         "laravelcollective/html": "^6.0",
-        "mad-web/laravel-initializer": "^2.0",
-        "pusher/pusher-php-server": "~3.0",
+        "mad-web/laravel-initializer": "^3.0",
+        "pusher/pusher-php-server": "~4.0",
         "react/dns": "^1.2",
-        "realrashid/sweet-alert": "^2.0",
+        "realrashid/sweet-alert": "^3.0",
         "spatie/laravel-google-calendar": "^2.2",
         "spatie/laravel-permission": "^3.2",
         "van-ons/laraberg": "^1.0@RC"
@@ -34,8 +35,9 @@
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5"
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^8.5",
+        "facade/ignition": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,

@@ -6,11 +6,9 @@ use App\Entities\Course;
 use App\Http\Requests\Lesson\CreateRequest;
 use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Traits\Authorizable;
-use App\Usescases\Lessons\Contracts\CreateLessonUsecaseInterface;
-use App\Usescases\Lessons\Contracts\DeleteLessonUsescaseInterface;
-use App\Usescases\Lessons\Contracts\UpdateLessonUsescaseInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface, DeleteLessonUsescaseInterface, UpdateLessonUsescaseInterface};
 
 class LessonController extends Controller
 {
@@ -46,7 +44,7 @@ class LessonController extends Controller
      *
      * @param CreateRequest $request
      * @param CreateLessonUsecaseInterface $createLessonUsecase
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateRequest $request, CreateLessonUsecaseInterface $createLessonUsecase)
     {
@@ -56,13 +54,13 @@ class LessonController extends Controller
                 flash('Clase creada correctamente');
             } else {
                 flash(implode('-', $result['errors']), 'error');
+                throw new \Exception('error create course');
             }
-
+            return redirect()->route('courses.edit', $request->get('course_id'));
         } catch (\Exception $e){
-            flash($e->getMessage(), 'error');
-        }
 
-        return redirect()->route('courses.edit', $request->get('course_id'));
+            return redirect()->back();
+        }
     }
 
     /**
