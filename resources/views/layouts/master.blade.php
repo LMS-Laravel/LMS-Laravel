@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>{{ env('APP_NAME') }} | {{ env('APP_DESCRIPTION') }}</title>
+    <title>{{  Config::get('settings.name') }} | {{  Config::get('settings.description') }}</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel='icon' href='/favicon.ico' type='image/x-icon' >
@@ -61,9 +61,9 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <img src="{{ asset('logo.png') }}" alt="{{ env('APP_NAME') }}" class="brand-image img-circle elevation-3"
+            <img src="{{  Config::get('settings.logo') }}" alt="{{  Config::get('settings.name') }}" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">{{ env('APP_NAME') }} <span class="right badge badge-danger">beta</span></span>
+            <span class="brand-text font-weight-light">{{  Config::get('settings.name') }} <span class="right badge badge-danger">beta</span></span>
         </a>
 
         <!-- Sidebar -->
@@ -183,7 +183,7 @@
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            PHP Virtual Academy
+            {{  Config::get('settings.name') }}
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href="http://angelkurten.com">Angel Kürten</a>.</strong> All rights reserved.
