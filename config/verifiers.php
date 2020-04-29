@@ -1,8 +1,10 @@
 <?php
 
+use LMS\Modules\Core\Services\Verification\Verifiers\{GoogleRecaptchaVerifier, WebAuthVerifier};
+
 return [
     'bindings' => [
-        'webauth' => \App\Services\Verifiers\WebAuthVerifier::class,
-        'captcha' => \App\Services\Verifiers\GoogleRecaptchaVerifier::class
+        'webauth' => WebAuthVerifier::class,
+        'captcha' => GoogleRecaptchaVerifier::class
     ]
 ];

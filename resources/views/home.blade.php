@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">3,200</h5>
+                                    <h5 class="description-header">{{ $course->students()->count() }}</h5>
                                     <span class="description-text">STUDENTS</span>
                                 </div>
                                 <!-- /.description-block -->

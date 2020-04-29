@@ -98,6 +98,7 @@ class RoleAndPermissionSeeder extends Seeder
         if( $role->name == 'Admin' ) {
             $this->command->info('Here is your admin details to login:');
             $this->command->warn($user->email);
+            $this->command->warn($user->username);
             $this->command->warn('Password is "password"');
         }
     }

@@ -24,7 +24,7 @@ class Lesson extends Model
 
     public function content()
     {
-        return $this->laraberg_content();
+        return $this->larabergContent();
     }
 
     public function messages()

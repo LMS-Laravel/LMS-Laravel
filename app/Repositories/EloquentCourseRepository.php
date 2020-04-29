@@ -6,11 +6,16 @@ namespace App\Repositories;
 
 use App\Entities\Course;
 use App\Repositories\Contracts\CourseRepositoryInterface;
+use App\Repositories\Contracts\LessonRepositoryInterface;
+use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Support\Collection;
 
 class EloquentCourseRepository implements CourseRepositoryInterface
 {
 
+    /**
+     * @return Course
+     */
     public function getModel()
     {
         return new Course();
@@ -49,5 +54,19 @@ class EloquentCourseRepository implements CourseRepositoryInterface
     public function allAvailable() : Collection
     {
         return $this->getModel()->all()->where('status', 'enabled');
+    }
+
+    public function subscribe(int $course_id, int $user_id)
+    {
+        $course = $this->getModel()->findOrFail($course_id);
+        return $course->students()->attach($user_id);
+    }
+
+
+    public function checkSubscribed(int $course_id, int $user_id)
+    {
+        $course = $this->getModel()->findOrFail($course_id);
+
+        return $course->students()->find($user_id);
     }
 }

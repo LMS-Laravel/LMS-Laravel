@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header"><b>@lang('lesson/lessons.lesson'):</b> {{ $lesson->title }}</div>
                     <div class="card-body">
-                        {!! $lesson->lb_content !!}
+                        {!! $lesson->content !!}
                     </div>
                 </div>
             </div>
