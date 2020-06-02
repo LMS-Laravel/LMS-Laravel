@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Entities\User;
 use App\Http\Controllers\Controller;
-use App\Services\Verification\MasterVerifier;
-use App\Services\Verifiers\GoogleRecaptchaVerifier;
-use App\Usescases\Users\Contracts\AssignRoleUserUsecaseInterface;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use LMS\Modules\Core\Services\Verification\MasterVerifier;
+use LMS\Modules\Core\Services\Verification\Verifiers\GoogleRecaptchaVerifier;
+use LMS\Modules\Users\Usescases\Contracts\AssignRoleUserUsecaseInterface;
 
 class RegisterController extends Controller
 {
@@ -45,9 +45,9 @@ class RegisterController extends Controller
 
     /**
      * Create a new controller instance.
-     *
+     * @param AssignRoleUserUsecaseInterface $assignRoleUserUsecase
      */
-    public function __construct()
+    public function __construct(AssignRoleUserUsecaseInterface $assignRoleUserUsecase)
     {
         $this->middleware('guest');
     }
@@ -100,8 +100,7 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        $user->assignRole('User');
-
+        $this->assignRoleUserUsecase->handle($user->id, 'User');
     }
 
 
