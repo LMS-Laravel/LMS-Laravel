@@ -5,7 +5,8 @@ namespace LMS\Modules\Users\Usescases;
 
 
 use App\Repositories\Contracts\UserRepositoryInterface;
-use App\Services\Roles\Contracts\ServiceRoleInterface;
+
+use LMS\Modules\Users\Services\Roles\Contracts\ServiceRoleInterface;
 use LMS\Modules\Users\Usescases\Contracts\AssignRoleUserUsecaseInterface;
 
 
