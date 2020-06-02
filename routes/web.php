@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/stream', 'HomeController@stream')->name('stream')->middleware('verified');
 
 Route::group( ['middleware' => ['auth']], function() {
