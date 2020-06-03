@@ -13,7 +13,7 @@
         "axios": "^0.18",
         "bootstrap": "^4.1.0",
         "cross-env": "^5.1",
-        "jquery": "^3.2",
+        "jquery": ">=3.5.0",
         "laravel-mix": "^4.0.7",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
@@ -21,7 +21,9 @@
         "sass": "^1.22.9",
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "minimist": ">=1.2.3",
+        "kind-of": ">=6.0.3"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.9.0",
