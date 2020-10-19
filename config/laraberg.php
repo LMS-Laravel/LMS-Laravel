@@ -10,7 +10,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'use_package_routes' => true,
+    'use_package_routes' => false,
 
     'middlewares' => ['web', 'auth'],
 
@@ -20,5 +20,5 @@ return [
         "block" => Block::class,
         "content" => Content::class,
     ],
-    
+
 ];

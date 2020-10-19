@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entities\User;
 use App\Entities\Message;
-use App\Repositories\Contracts\CourseRepositoryInterface;
+use LMS\Modules\Courses\Repositories\Contracts\CourseRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

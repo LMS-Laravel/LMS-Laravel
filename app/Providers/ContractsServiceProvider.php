@@ -4,30 +4,34 @@
 namespace App\Providers;
 
 
-use App\Repositories\Contracts\{CourseRepositoryInterface, LessonRepositoryInterface, PermissionRepositoryInterface, RoleRepositoryInterface, UserRepositoryInterface};
-use App\Repositories\{EloquentCourseRepository, EloquentUserRepository, EloquentLessonRepository, EloquentPermissionRepository, EloquentRoleRepository};
+use App\Repositories\Contracts\{PermissionRepositoryInterface, RoleRepositoryInterface, UserRepositoryInterface};
+use App\Repositories\{EloquentUserRepository, EloquentPermissionRepository, EloquentRoleRepository};
 
 
 use Illuminate\Support\ServiceProvider;
-use LMS\Modules\Courses\Usescases\Contracts\{CreateCourseUsescaseInterface,
+use LMS\Modules\Courses\Usecases\Contracts\{CreateCourseUsescaseInterface,
     ListCourseUsecaseInterface,
     DeleteCourseUsecaseInterface,
     ShowCourseUsecaseInterface,
     SubscribeCourseUsecaseInterface,
     UpdateCourseUsecaseInterface};
-use LMS\Modules\Courses\Usescases\{CreateCourseUsecase, ListCourseUsecase, UpdateCourseUsecase, DeleteCourseUsecase};
-use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface,
+use LMS\Modules\Courses\Usecases\{CreateCourseUsecase, ListCourseUsecase, UpdateCourseUsecase, DeleteCourseUsecase};
+use LMS\Modules\Lessons\Usecases\Contracts\{CreateLessonUsecaseInterface,
     ListLessonUsecaseInterface,
     ShowLessonUsecaseInterface,
     UpdateLessonUsescaseInterface,
     DeleteLessonUsescaseInterface};
-use LMS\Modules\Lessons\Usescases\{CreateLessonUsecase,
+use LMS\Modules\Lessons\Usecases\{CreateLessonUsecase,
     ListLessonUsecase,
     ShowLessonUsecase,
     UpdateLessonUsecase,
     DeleteLessonUsecase};
+use LMS\Modules\Courses\Repositories\Contracts\CourseRepositoryInterface;
+use LMS\Modules\Courses\Repositories\EloquentCourseRepository;
 use LMS\Modules\Courses\Usecases\ShowCourseUsecase;
 use LMS\Modules\Courses\Usecases\SubscribeCourseUsecase;
+use LMS\Modules\Lessons\Repositories\Contracts\LessonRepositoryInterface;
+use LMS\Modules\Lessons\Repositories\EloquentLessonRepository;
 use LMS\Modules\Users\Services\Roles\Contracts\ServiceRoleInterface;
 use LMS\Modules\Users\Services\Roles\SpatieServiceRole;
 use LMS\Modules\Users\Usescases\AssignRoleUserUsecase;
