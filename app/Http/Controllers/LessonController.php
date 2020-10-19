@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Entities\Course;
 use App\Http\Requests\Lesson\CreateRequest;
-use App\Repositories\Contracts\LessonRepositoryInterface;
+use LMS\Modules\Lessons\Repositories\Contracts\LessonRepositoryInterface;
 use App\Traits\Authorizable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use LMS\Modules\Lessons\Usescases\Contracts\{CreateLessonUsecaseInterface,
+use LMS\Modules\Lessons\Usecases\Contracts\{CreateLessonUsecaseInterface,
     DeleteLessonUsescaseInterface,
     ShowLessonUsecaseInterface,
     UpdateLessonUsescaseInterface};

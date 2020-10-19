@@ -6,10 +6,10 @@ use App\Enums\Roles;
 use App\Http\Requests\Course\CreateRequest;
 use App\Http\Requests\Course\UpdateRequest;
 use App\Repositories\Contracts\UserRepositoryInterface;
-use App\Repositories\Contracts\CourseRepositoryInterface;
+use LMS\Modules\Courses\Repositories\Contracts\CourseRepositoryInterface;
 use App\Traits\Authorizable;
 use Illuminate\Support\Facades\Auth;
-use LMS\Modules\Courses\Usescases\Contracts\{ListCourseUsecaseInterface,
+use LMS\Modules\Courses\Usecases\Contracts\{ListCourseUsecaseInterface,
     CreateCourseUsescaseInterface,
     ShowCourseUsecaseInterface,
     UpdateCourseUsecaseInterface,

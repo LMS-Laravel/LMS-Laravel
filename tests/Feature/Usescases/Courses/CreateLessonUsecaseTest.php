@@ -6,7 +6,7 @@ namespace Tests\Feature\Usescases\Courses;
 
 use App\Entities\Course;
 use App\Entities\Lesson;
-use App\Repositories\Contracts\LessonRepositoryInterface;
+use LMS\Modules\Lessons\Repositories\Contracts\LessonRepositoryInterface;
 use App\Usescases\Courses\CreateLessonUsecase;
 use PHPUnit\Framework\TestCase;
 
