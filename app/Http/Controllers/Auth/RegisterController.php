@@ -50,6 +50,7 @@ class RegisterController extends Controller
     public function __construct(AssignRoleUserUsecaseInterface $assignRoleUserUsecase)
     {
         $this->middleware('guest');
+        $this->assignRoleUserUsecase = $assignRoleUserUsecase;
     }
 
     public function register(Request $request)
