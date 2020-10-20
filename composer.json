@@ -22,6 +22,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "mad-web/laravel-initializer": "^3.0",
         "predis/predis": "^1.1",
         "pusher/pusher-php-server": "~4.0",
@@ -29,7 +30,8 @@
         "realrashid/sweet-alert": "^3.0",
         "spatie/laravel-google-calendar": "^3.0",
         "spatie/laravel-permission": "^3.2",
-        "van-ons/laraberg": "1.0.0"
+        "unisharp/laravel-filemanager": "dev-master",
+        "van-ons/laraberg": "1.1.1"
     },
     "require-dev": {
         "imanghafoori/laravel-microscope": "1.*",

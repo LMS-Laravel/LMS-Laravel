@@ -23,3 +23,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('lessons', 'LessonController')->except('create');
     Route::get('/lessons/create/{course}', 'LessonController@create')->name('lessons.create');
 });
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

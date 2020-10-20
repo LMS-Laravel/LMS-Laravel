@@ -51,6 +51,6 @@
     <script src="https://unpkg.com/moment@2.24.0/min/moment.min.js"></script>
     <script src="{{ asset('vendor/laraberg/js/laraberg.js') }}"></script>
     <script>
-        Laraberg.init('laraberg')
+        Laraberg.init('laraberg', { laravelFilemanager: true })
     </script>
 @endsection
