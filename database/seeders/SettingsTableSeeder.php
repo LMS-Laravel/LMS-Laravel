@@ -39,7 +39,7 @@ class SettingsTableSeeder extends Seeder
             'key'         => 'logo',
             'name'        => 'Logo',
             'description' => 'Logo used for platform',
-            'value'       => 'http://lms-laravel.test/logo.png',
+            'value'       => config('app.url') . '/logo.png',
             'field'       => '{"name":"logo","label":"Logo","type":"file"}',
             'active'      => 1,
         ],
