@@ -37,7 +37,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
 
-            <textarea type="text" v-model="newMessage" ref="message" @keyup.enter="sendMessage" name="message" placeholder="¿Que estas pensando?" class="form-control"></textarea>
+            <textarea type="text" v-model="newMessage" ref="message" @keyup.enter="sendMessage" name="message" v-bind:placeholder="prompt" class="form-control"></textarea>
         </div>
         <!-- /.card-footer-->
     </div>
@@ -51,7 +51,7 @@
     import moment  from 'moment';
 
     export default {
-        props:['user', 'resource', 'type'],
+        props:['user', 'resource', 'type', 'prompt'],
         data() {
             return {
                 messages: '',
@@ -64,7 +64,7 @@
                 render: toolkit,
                 muted: false,
                 routeApi:  '/api/message',
-                chatName: 'chat'
+                chatName: 'chat',
             }
         },
         created() {

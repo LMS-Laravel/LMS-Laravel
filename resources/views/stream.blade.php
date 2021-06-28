@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Bienvenido {{ auth()->user()->name }}</div>
+                    <div class="card-header">{{ __('Welcome') }} {{ auth()->user()->name }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -20,9 +20,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <chat :user="{{ auth()->user() }}" :resource="0" :type="'stream'"></chat>
+                <chat :user="{{ auth()->user() }}" :resource="0" :type="'stream'" prompt="{{__('What would you like to share?')}}"></chat>
             </div>
         </div>
     </div>
 @endsection
-
